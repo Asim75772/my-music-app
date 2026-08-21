@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wave Music</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0b0b0f;
+color:white;
+}
+
+.app{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h1{
+font-size:28px;
+}
+
+.search{
+font-size:22px;
+}
+
+
+.card{
+margin-top:25px;
+background:#17171d;
+padding:20px;
+border-radius:25px;
+text-align:center;
+}
+
+.cover{
+height:300px;
+border-radius:20px;
+background:linear-gradient(135deg,#333,#111);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:90px;
+}
+
+
+.song-name{
+font-size:25px;
+font-weight:bold;
+margin-top:20px;
+}
+
+
+.artist{
+color:#999;
+margin-top:8px;
+}
+
+
+input{
+width:100%;
+margin-top:25px;
+}
+
+
+.controls{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+margin-top:25px;
+}
+
+
+.controls button{
+background:none;
+border:none;
+color:white;
+font-size:30px;
+}
+
+
+.play{
+background:white!important;
+color:black!important;
+width:70px;
+height:70px;
+border-radius:50%;
+}
+
+
+.list{
+margin-top:30px;
+}
+
+
+.item{
+display:flex;
+align-items:center;
+background:#17171d;
+padding:15px;
+border-radius:15px;
+margin-top:12px;
+}
+
+
+.icon{
+width:55px;
+height:55px;
+background:#292932;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+margin-right:15px;
+}
+
+
+.info{
+flex:1;
+}
+
+
+.info p{
+color:#888;
+font-size:13px;
+}
+
+
+.item button{
+background:#292932;
+color:white;
+border:none;
+width:40px;
+height:40px;
+border-radius:50%;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<div class="header">
+
+<h1>Wave Music 🎵</h1>
+
+<div class="search">🔍</div>
+
+</div>
+
+
+
+<div class="card">
+
+
+<div class="cover">
+🎧
+</div>
+
+
+<div class="song-name" id="title">
+Online Music
+</div>
+
+
+<div class="artist" id="artist">
+Artist Name
+</div>
+
+
+<input type="range" id="bar" value="0">
+
+
+<div class="controls">
+
+
+<button onclick="prev()">⏮</button>
+
+
+<button class="play" onclick="playMusic()" id="play">
+▶
+</button>
+
+
+<button onclick="next()">⏭</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="list">
+
+<h2>Songs</h2>
+
+
+<div class="item">
+
+<div class="icon">🎵</div>
+
+<div class="info">
+<h3>Song One</h3>
+<p>Artist One</p>
+</div>
+
+<button onclick="load(0)">▶</button>
+
+</div>
+
+
+
+<div class="item">
+
+<div class="icon">🎶</div>
+
+<div class="info">
+<h3>Song Two</h3>
+<p>Artist Two</p>
+</div>
+
+<button onclick="load(1)">▶</button>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<audio id="audio"></audio>
+
+
+
+<script>
+
+
+let songs=[
+
+{
+name:"Song One",
+artist:"Artist One",
+url:"https://ice5.somafm.com/live-128-mp3"
+},
+
+
+{
+name:"Song Two",
+artist:"Artist Two",
+url:"https://ice5.somafm.com/thetrip-128-mp3"
+}
+
+];
+
+
+let index=0;
+
+
+let audio=document.getElementById("audio");
+
+let play=document.getElementById("play");
+
+
+function load(i){
+
+index=i;
+
+audio.src=songs[i].url;
+
+document.getElementById("title").innerHTML=songs[i].name;
+
+document.getElementById("artist").innerHTML=songs[i].artist;
+
+audio.play();
+
+play.innerHTML="⏸";
+
+}
+
+
+
+function playMusic(){
+
+if(audio.paused){
+
+load(index);
+
+}
+
+else{
+
+audio.pause();
+
+play.innerHTML="▶";
+
+}
+
+}
+
+
+
+function next(){
+
+index++;
+
+if(index>=songs.length){
+
+index=0;
+
+}
+
+load(index);
+
+}
+
+
+
+function prev(){
+
+index--;
+
+if(index<0){
+
+index=songs.length-1;
+
+}
+
+load(index);
+
+}
+
+
+
+audio.addEventListener("timeupdate",()=>{
+
+document.getElementById("bar").value=
+
+(audio.currentTime/audio.duration)*100;
+
+});
+
+
+</script>
+
+
+</body>
+</html>
