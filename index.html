@@ -7,6 +7,8 @@
 
 <title>Madhu Music World</title>
 
+<meta name="theme-color" content="#ff0099">
+
 <style>
 
 *{
@@ -16,472 +18,380 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
-:root{
---pink:#ff0099;
---pink2:#ff2bb5;
---dark:#07070d;
---card:#15151f;
---card2:#191923;
---text:#fff;
---muted:#9999a5;
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:var(--dark);
-color:var(--text);
+background:#07070d;
+color:white;
 padding-bottom:90px;
-}
-
-button{
-font-family:inherit;
 }
 
 .app{
 max-width:700px;
 margin:auto;
-padding:18px;
+padding:20px 18px 30px;
 }
 
 /* HEADER */
 
 .header{
 display:flex;
-align-items:center;
 justify-content:space-between;
-margin-bottom:20px;
+align-items:center;
+gap:10px;
 }
 
-.logo{
-font-size:30px;
-font-weight:bold;
+.header h1{
+font-size:32px;
+font-weight:800;
 }
 
-.logo span{
-color:var(--pink);
-}
-
-.search-btn{
-font-size:30px;
-background:none;
-border:0;
-color:white;
+.searchBtn{
+font-size:32px;
 cursor:pointer;
 }
 
 /* SEARCH */
 
-.search-box{
+.searchBox{
 display:none;
-margin-bottom:18px;
+margin-top:18px;
 }
 
-.search-box.show{
+.searchBox.show{
 display:block;
 }
 
-.search-box input{
+.searchBox input{
 width:100%;
 padding:15px 18px;
-border-radius:18px;
-border:1px solid #343442;
+border-radius:20px;
+border:1px solid #333;
 background:#171720;
 color:white;
 font-size:16px;
 outline:none;
 }
 
-.search-box input:focus{
-border-color:var(--pink);
+.searchBox input:focus{
+border-color:#ff0099;
 }
 
 /* HERO */
 
 .hero{
-height:250px;
-border-radius:32px;
-padding:30px;
+margin-top:28px;
+height:300px;
+border-radius:35px;
+padding:35px;
 display:flex;
 align-items:flex-end;
-overflow:hidden;
 position:relative;
+overflow:hidden;
 background:
-radial-gradient(circle at 75% 35%,#ff0099 0,#72005f 22%,transparent 45%),
-linear-gradient(135deg,#25004d,#090015);
-margin-bottom:22px;
+radial-gradient(circle at 75% 35%,#ff0099 0%,transparent 25%),
+linear-gradient(135deg,#31004d,#15002a,#080012);
+box-shadow:0 10px 40px #000;
 }
 
 .hero:after{
 content:"🎧";
 position:absolute;
-right:35px;
-top:45px;
+right:45px;
+top:55px;
 font-size:120px;
-opacity:.7;
+opacity:.45;
 }
 
-.hero-text{
+.heroText{
 position:relative;
 z-index:2;
 }
 
 .hero h2{
-font-size:34px;
-margin-bottom:10px;
+font-size:42px;
+margin-bottom:12px;
 }
 
 .hero p{
-font-size:18px;
+font-size:20px;
 color:#ddd;
 }
 
-/* CATEGORIES */
+/* CATEGORY */
 
 .categories{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
-margin-bottom:28px;
+gap:16px;
+margin-top:30px;
 }
 
 .category{
-min-height:75px;
+padding:20px 15px;
 border-radius:25px;
-border:1px solid #323242;
-background:#11111b;
+background:#12121e;
+border:1px solid #303047;
 color:white;
-font-size:18px;
+font-size:20px;
 cursor:pointer;
 transition:.2s;
 }
 
-.category:hover{
-border-color:var(--pink);
-}
-
+.category:hover,
 .category.active{
-background:linear-gradient(135deg,#ff0099,#c00078);
-border-color:#ff46ba;
-}
-
-.category:nth-child(1){
-grid-column:span 2;
+background:linear-gradient(135deg,#ff0099,#c000ff);
+border-color:#ff0099;
+transform:translateY(-2px);
 }
 
 /* PLAYER */
 
-.player{
-background:var(--card);
-border:1px solid #2d2d3b;
-border-radius:32px;
-padding:28px 22px;
+.card{
+background:#15151f;
+border:1px solid #29293a;
+border-radius:35px;
+padding:30px;
+margin-top:35px;
 text-align:center;
-margin-bottom:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+box-shadow:0 10px 35px #000;
 }
 
 .cover{
-height:310px;
-border-radius:26px;
+height:350px;
+border-radius:30px;
+background:
+radial-gradient(circle at center,#ff0099 0%,#26003d 35%,#10001d 70%);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:110px;
-background:
-radial-gradient(circle,#ff0099 0,#42005c 30%,#120020 70%);
-margin-bottom:24px;
+font-size:130px;
 overflow:hidden;
 }
 
-.cover img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
 .title{
-font-size:27px;
+font-size:32px;
 font-weight:bold;
-line-height:1.2;
+margin-top:28px;
+word-break:break-word;
 }
 
 .artist{
-color:var(--muted);
-font-size:18px;
+color:#aaa;
+font-size:20px;
 margin-top:10px;
 }
 
 .status{
-color:var(--pink);
-font-size:14px;
-margin-top:8px;
+color:#ff0099;
+font-size:18px;
+margin-top:10px;
+min-height:22px;
 }
 
-.progress{
+input[type="range"]{
 width:100%;
 margin-top:25px;
-accent-color:var(--pink);
+accent-color:#ff0099;
+height:5px;
+cursor:pointer;
 }
 
 .controls{
 display:flex;
-align-items:center;
 justify-content:center;
-gap:35px;
+align-items:center;
+gap:45px;
 margin-top:28px;
 }
 
-.control{
+button{
 border:0;
 background:none;
 color:white;
-font-size:32px;
 cursor:pointer;
+}
+
+.control{
+font-size:35px;
 }
 
 .play{
-width:78px;
-height:78px;
+background:#ff0099;
+color:white;
+height:90px;
+width:90px;
 border-radius:50%;
-border:0;
-background:var(--pink);
-color:white;
-font-size:30px;
-cursor:pointer;
+font-size:35px;
+box-shadow:0 0 25px #ff009955;
 }
 
-.favorite-main{
-display:block;
-margin:20px auto 0;
-background:none;
-border:0;
-font-size:32px;
-color:white;
-cursor:pointer;
-}
-
-.favorite-main.active{
-color:var(--pink);
+.favoriteBtn{
+font-size:38px;
+margin-top:25px;
 }
 
 /* STATION SECTION */
 
-.section-title{
+.stationHeader{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin:20px 0 10px;
+margin-top:40px;
+margin-bottom:15px;
 }
 
-.section-title h2{
-font-size:27px;
+.stationHeader h2{
+font-size:30px;
 }
 
 .online{
-color:var(--pink);
+color:#ff0099;
+font-size:18px;
 }
 
-#stationList{
-margin-bottom:30px;
+#loading{
+text-align:center;
+color:#aaa;
+padding:30px 10px;
+font-size:18px;
 }
 
-.station{
+#message{
+text-align:center;
+color:#aaa;
+padding:30px 10px;
+font-size:18px;
+}
+
+/* SONG LIST */
+
+.song{
 display:flex;
 align-items:center;
-gap:14px;
-background:var(--card2);
-border:1px solid #292936;
+background:#15151f;
+border:1px solid #29293a;
+padding:16px;
 border-radius:22px;
-padding:14px;
-margin-top:12px;
+margin-top:14px;
 cursor:pointer;
+transition:.2s;
 }
 
-.station:hover{
-border-color:var(--pink);
+.song:hover{
+border-color:#ff0099;
+transform:translateY(-2px);
 }
 
-.station-logo{
-height:58px;
-width:58px;
-border-radius:16px;
-background:#292934;
+.pic{
+height:60px;
+width:60px;
+min-width:60px;
+background:linear-gradient(135deg,#35005a,#ff0099);
+border-radius:18px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:25px;
-overflow:hidden;
-flex-shrink:0;
+font-size:28px;
+margin-right:15px;
 }
 
-.station-logo img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.station-info{
+.info{
 flex:1;
 min-width:0;
 }
 
-.station-info h3{
-font-size:17px;
+.info h3{
+font-size:18px;
 white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis;
 }
 
-.station-info p{
-color:var(--muted);
-font-size:14px;
-margin-top:5px;
-}
-
-.station-like{
-font-size:24px;
-background:none;
-border:0;
-color:white;
-cursor:pointer;
-}
-
-.station-like.active{
-color:var(--pink);
-}
-
-/* LOADING */
-
-.loading{
-text-align:center;
-padding:30px 10px;
-color:#aaa;
-}
-
-.spinner{
-display:inline-block;
-width:25px;
-height:25px;
-border:3px solid #444;
-border-top-color:var(--pink);
-border-radius:50%;
-animation:spin 1s linear infinite;
-vertical-align:middle;
-margin-right:8px;
-}
-
-@keyframes spin{
-to{
-transform:rotate(360deg);
-}
-}
-
-.empty{
-text-align:center;
+.info p{
 color:#888;
-padding:35px 10px;
+margin-top:5px;
+font-size:14px;
 }
 
-/* NAVIGATION */
+.songLike{
+font-size:25px;
+margin-left:10px;
+}
+
+/* NAV */
 
 .nav{
 position:fixed;
 bottom:0;
 left:0;
 right:0;
-height:82px;
-background:#12121b;
-border-top:1px solid #292936;
+background:#111119;
+border-top:1px solid #29293a;
 display:flex;
 justify-content:space-around;
-align-items:center;
+padding:12px 5px 10px;
 z-index:100;
 }
 
-.nav button{
-background:none;
-border:0;
+.navItem{
+text-align:center;
 color:#888;
 font-size:14px;
 cursor:pointer;
 min-width:70px;
 }
 
-.nav-icon{
-font-size:25px;
-display:block;
+.navIcon{
+font-size:27px;
 margin-bottom:4px;
 }
 
-.nav button.active{
-color:var(--pink);
+.navItem.active{
+color:#ff0099;
 }
 
-/* TOAST */
+/* RESPONSIVE */
 
-.toast{
-position:fixed;
-left:50%;
-bottom:100px;
-transform:translateX(-50%) translateY(20px);
-background:#252531;
-padding:13px 20px;
-border-radius:15px;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-z-index:200;
-white-space:nowrap;
-}
-
-.toast.show{
-opacity:1;
-transform:translateX(-50%) translateY(0);
-}
-
-/* MOBILE */
-
-@media(max-width:500px){
+@media(max-width:520px){
 
 .app{
-padding:16px;
+padding:18px 14px 30px;
 }
 
-.logo{
+.header h1{
 font-size:28px;
 }
 
 .hero{
-height:230px;
-padding:25px;
+height:260px;
+padding:28px;
 }
 
 .hero h2{
-font-size:29px;
+font-size:34px;
 }
 
-.hero:after{
-font-size:95px;
-right:15px;
+.hero p{
+font-size:17px;
 }
 
 .cover{
-height:285px;
+height:300px;
 }
 
 .title{
-font-size:25px;
+font-size:27px;
 }
 
-.categories{
-gap:10px;
-}
-
-.category{
-font-size:16px;
+.card{
+padding:22px 18px;
 }
 
 .controls{
-gap:28px;
+gap:30px;
 }
 
 }
@@ -496,23 +406,23 @@ gap:28px;
 
 <!-- HEADER -->
 
-<header class="header">
+<div class="header">
 
-<div class="logo">
-Madhu Music World <span>♫</span>
+<h1>Madhu Music World 🎵</h1>
+
+<div class="searchBtn" onclick="toggleSearch()">
+🔎
 </div>
 
-<button class="search-btn" onclick="toggleSearch()">🔍</button>
-
-</header>
+</div>
 
 
 <!-- SEARCH -->
 
-<div class="search-box" id="searchBox">
+<div class="searchBox" id="searchBox">
 
 <input
-type="search"
+type="text"
 id="searchInput"
 placeholder="Search station..."
 oninput="searchStations()"
@@ -521,11 +431,11 @@ oninput="searchStations()"
 </div>
 
 
-<!-- HOME HERO -->
+<!-- HERO -->
 
-<section class="hero">
+<div class="hero">
 
-<div class="hero-text">
+<div class="heroText">
 
 <h2>Feel The Music</h2>
 
@@ -533,30 +443,30 @@ oninput="searchStations()"
 
 </div>
 
-</section>
+</div>
 
 
 <!-- CATEGORY -->
 
 <div class="categories">
 
-<button class="category active" onclick="changeCategory('all',this)">
+<button class="category active" onclick="selectCategory('all',this)">
 🎵 All Stations
 </button>
 
-<button class="category" onclick="changeCategory('bengali',this)">
+<button class="category" onclick="selectCategory('bengali',this)">
 🎶 Bengali
 </button>
 
-<button class="category" onclick="changeCategory('hindi',this)">
+<button class="category" onclick="selectCategory('hindi',this)">
 🎵 Hindi
 </button>
 
-<button class="category" onclick="changeCategory('rabindra',this)">
+<button class="category" onclick="selectCategory('rabindra',this)">
 🎼 Rabindra Sangeet
 </button>
 
-<button class="category" onclick="changeCategory('bhajan',this)">
+<button class="category" onclick="selectCategory('bhajan',this)">
 🕉️ Bhajan
 </button>
 
@@ -565,9 +475,9 @@ oninput="searchStations()"
 
 <!-- PLAYER -->
 
-<section class="player">
+<div class="card">
 
-<div class="cover" id="cover">
+<div class="cover">
 🎧
 </div>
 
@@ -584,7 +494,6 @@ Choose a station below
 </div>
 
 <input
-class="progress"
 type="range"
 id="progress"
 min="0"
@@ -594,198 +503,271 @@ value="0"
 
 <div class="controls">
 
-<button class="control" onclick="previousStation()">
+<button
+class="control"
+onclick="previousStation()"
+>
 ⏮
 </button>
 
-<button class="play" id="playButton" onclick="playPause()">
+<button
+class="play"
+onclick="playPause()"
+id="play"
+>
 ▶
 </button>
 
-<button class="control" onclick="nextStation()">
+<button
+class="control"
+onclick="nextStation()"
+>
 ⏭
 </button>
 
 </div>
 
 <button
-class="favorite-main"
-id="mainFavorite"
-onclick="toggleMainFavorite()"
+class="favoriteBtn"
+onclick="toggleFavoriteCurrent()"
+id="favoriteBtn"
 >
 ♡
 </button>
 
-</section>
+</div>
 
 
-<!-- STATIONS -->
+<!-- STATION LIST -->
 
-<div class="section-title">
+<div class="stationHeader">
 
-<h2 id="sectionTitle">
+<h2 id="stationTitle">
 All Stations
 </h2>
 
-<span class="online">
+<div class="online">
 Online
-</span>
+</div>
 
 </div>
 
-<div id="stationList">
 
-<div class="loading">
-<span class="spinner"></span>
+<div id="loading">
 Loading stations...
 </div>
 
-</div>
+<div id="songs"></div>
+
+<div id="message"></div>
+
 
 </div>
 
 
-<!-- BOTTOM NAV -->
+<!-- NAVIGATION -->
 
-<nav class="nav">
+<div class="nav">
 
-<button class="active" id="homeNav" onclick="goHome()">
-<span class="nav-icon">⌂</span>
+<div
+class="navItem active"
+onclick="showHome(this)"
+>
+<div class="navIcon">⌂</div>
 Home
-</button>
+</div>
 
-<button id="musicNav" onclick="goMusic()">
-<span class="nav-icon">♫</span>
+<div
+class="navItem"
+onclick="showMusic(this)"
+>
+<div class="navIcon">♫</div>
 Music
-</button>
+</div>
 
-<button id="favoriteNav" onclick="showFavorites()">
-<span class="nav-icon">♡</span>
+<div
+class="navItem"
+onclick="showFavorites(this)"
+>
+<div class="navIcon">♡</div>
 Favorite
-</button>
+</div>
 
-<button id="libraryNav" onclick="showLibrary()">
-<span class="nav-icon">▱</span>
+<div
+class="navItem"
+onclick="showLibrary(this)"
+>
+<div class="navIcon">▱</div>
 Library
-</button>
+</div>
 
-</nav>
+</div>
 
 
-<!-- AUDIO -->
-
-<audio id="audio" preload="none"></audio>
-
-<div class="toast" id="toast"></div>
+<audio id="audio"></audio>
 
 
 <script>
 
-/* =========================
+/* =========================================
    MADHU MUSIC WORLD
    ONLINE RADIO PLAYER
-========================= */
+========================================= */
 
 const audio = document.getElementById("audio");
 
 const title = document.getElementById("title");
+
 const artist = document.getElementById("artist");
+
 const statusText = document.getElementById("status");
-const cover = document.getElementById("cover");
-const playButton = document.getElementById("playButton");
+
+const playButton = document.getElementById("play");
+
 const progress = document.getElementById("progress");
-const stationList = document.getElementById("stationList");
-const sectionTitle = document.getElementById("sectionTitle");
-const mainFavorite = document.getElementById("mainFavorite");
+
+const songsBox = document.getElementById("songs");
+
+const loading = document.getElementById("loading");
+
+const message = document.getElementById("message");
+
+const stationTitle = document.getElementById("stationTitle");
+
+const favoriteBtn = document.getElementById("favoriteBtn");
+
 
 let stations = [];
+
 let currentIndex = -1;
+
 let currentCategory = "all";
-let showingFavorites = false;
+
+let favorites =
+JSON.parse(localStorage.getItem("madhuFavorites") || "[]");
 
 
 /* RADIO BROWSER SERVERS */
 
-const radioServers = [
-
-"https://all.api.radio-browser.info",
+const API_SERVERS = [
 
 "https://de1.api.radio-browser.info",
 
-"https://nl1.api.radio-browser.info"
+"https://nl1.api.radio-browser.info",
+
+"https://at1.api.radio-browser.info"
 
 ];
 
 
-/* CATEGORY SETTINGS */
+/* CATEGORY SEARCH */
 
-const categorySettings = {
+const categories = {
 
 all:{
-title:"All Stations",
-params:"limit=40&hidebroken=true&order=clickcount&reverse=true"
+name:"All Stations",
+queries:[
+{name:"music",limit:20},
+{tag:"music",limit:20}
+]
 },
 
 bengali:{
-title:"Bengali",
-params:"language=Bengali&limit=40&hidebroken=true&order=clickcount&reverse=true"
+name:"Bengali",
+queries:[
+{language:"Bengali",limit:30},
+{language:"Bangla",limit:30},
+{tag:"bengali",limit:30},
+{name:"Bangla",limit:30}
+]
 },
 
 hindi:{
-title:"Hindi",
-params:"language=Hindi&limit=40&hidebroken=true&order=clickcount&reverse=true"
+name:"Hindi",
+queries:[
+{language:"Hindi",limit:30},
+{tag:"hindi",limit:30},
+{name:"Hindi",limit:30}
+]
 },
 
 rabindra:{
-title:"Rabindra Sangeet",
-params:"tag=rabindra%20sangeet&limit=40&hidebroken=true&order=clickcount&reverse=true"
+name:"Rabindra Sangeet",
+queries:[
+{name:"Rabindra",limit:30},
+{tag:"rabindra",limit:30},
+{tag:"rabindrasangeet",limit:30},
+{name:"Tagore",limit:30}
+]
 },
 
 bhajan:{
-title:"Bhajan",
-params:"tag=bhajan&limit=40&hidebroken=true&order=clickcount&reverse=true"
+name:"Bhajan",
+queries:[
+{tag:"bhajan",limit:30},
+{tag:"devotional",limit:30},
+{name:"Bhajan",limit:30},
+{name:"Bhakti",limit:30}
+]
 }
 
 };
 
 
-/* =========================
-   FETCH STATIONS
-========================= */
+/* =========================================
+   API REQUEST
+========================================= */
 
-async function fetchStations(category){
+async function getStations(query){
 
-stationList.innerHTML = `
-<div class="loading">
-<span class="spinner"></span>
-Finding online stations...
-</div>
-`;
-
-let setting = categorySettings[category];
-
-let result = [];
-
-
-/* Try all radio browser servers */
-
-for(let server of radioServers){
+for(const server of API_SERVERS){
 
 try{
 
-let url =
+const params = new URLSearchParams();
+
+for(const key in query){
+
+params.set(key,query[key]);
+
+}
+
+params.set("hidebroken","true");
+
+params.set("order","clickcount");
+
+params.set("reverse","true");
+
+params.set("limit",query.limit || 30);
+
+
+const url =
 server +
 "/json/stations/search?" +
-setting.params;
+params.toString();
 
-let response = await fetch(url);
 
-if(!response.ok) continue;
+const response =
+await fetch(url,{
+method:"GET",
+headers:{
+"Accept":"application/json"
+}
+});
 
-let data = await response.json();
 
-if(Array.isArray(data)){
-result = result.concat(data);
+if(!response.ok){
+continue;
+}
+
+
+const data = await response.json();
+
+
+if(Array.isArray(data) && data.length){
+
+return data;
+
 }
 
 }catch(error){
@@ -796,44 +778,106 @@ console.log("Radio server error:",error);
 
 }
 
+return [];
 
-/* Remove duplicates */
+}
 
-const unique = new Map();
 
-result.forEach(station=>{
+/* =========================================
+   LOAD CATEGORY
+========================================= */
 
-if(
-station &&
-station.stationuuid &&
-station.name &&
-station.url_resolved
-){
+async function loadCategory(category){
 
-if(!unique.has(station.stationuuid)){
+currentCategory = category;
 
-unique.set(station.stationuuid,station);
+stations = [];
+
+currentIndex = -1;
+
+audio.pause();
+
+audio.src = "";
+
+playButton.innerHTML = "▶";
+
+title.innerText = "Select Station";
+
+artist.innerText = "Online Music";
+
+statusText.innerText = "Loading stations...";
+
+stationTitle.innerText =
+categories[category].name;
+
+songsBox.innerHTML = "";
+
+message.innerHTML = "";
+
+loading.style.display = "block";
+
+
+let results = [];
+
+
+for(const query of categories[category].queries){
+
+const data =
+await getStations(query);
+
+results = results.concat(data);
+
+if(results.length >= 40){
+
+break;
 
 }
 
 }
 
-});
+
+/* REMOVE DUPLICATES */
+
+const unique = [];
+
+const seen = new Set();
 
 
-stations = Array.from(unique.values());
+for(const station of results){
+
+const id =
+station.stationuuid ||
+station.url_resolved ||
+station.url;
 
 
-/* HTTPS only */
+if(!id || seen.has(id)){
 
-stations = stations.filter(station=>{
+continue;
+
+}
+
+seen.add(id);
+
+unique.push(station);
+
+}
+
+
+/* KEEP ONLY USABLE STREAMS */
+
+stations =
+unique.filter(station => {
 
 return (
-station.url_resolved &&
-station.url_resolved.startsWith("https://")
+station.url_resolved ||
+station.url
 );
 
-});
+}).slice(0,40);
+
+
+loading.style.display = "none";
 
 
 renderStations();
@@ -841,164 +885,186 @@ renderStations();
 }
 
 
-/* =========================
+/* =========================================
    RENDER STATIONS
-========================= */
+========================================= */
 
 function renderStations(){
 
-if(stations.length === 0){
+songsBox.innerHTML = "";
 
-stationList.innerHTML = `
-<div class="empty">
+message.innerHTML = "";
 
-No online station found.<br><br>
 
-Try another category.
+if(!stations.length){
 
-</div>
-`;
+message.innerHTML =
+"এই category-তে এখন কোনো working online station পাওয়া যায়নি।<br><br>অন্য category চেষ্টা করো।";
 
 return;
 
 }
 
-stationList.innerHTML = "";
 
 stations.forEach((station,index)=>{
 
-let div = document.createElement("div");
+const div =
+document.createElement("div");
 
-div.className = "station";
+div.className = "song";
 
-div.onclick = function(){
+
+const name =
+station.name || "Online Radio";
+
+
+const country =
+station.country || "Online Radio";
+
+
+const tags =
+station.tags || "";
+
+
+const isFav =
+favorites.includes(
+station.stationuuid
+);
+
+
+div.innerHTML = `
+
+<div class="pic">
+🎵
+</div>
+
+<div class="info">
+
+<h3>${escapeHTML(name)}</h3>
+
+<p>
+${escapeHTML(country)}
+${tags ? " • " + escapeHTML(tags.split(",").slice(0,2).join(", ")) : ""}
+</p>
+
+</div>
+
+<div
+class="songLike"
+onclick="event.stopPropagation();toggleFavorite(${index})"
+>
+${isFav ? "♥" : "♡"}
+</div>
+
+`;
+
+
+div.onclick =
+function(){
 
 selectStation(index);
 
 };
 
 
-let logo = station.favicon
-? `<img src="${escapeHtml(station.favicon)}"
-onerror="this.style.display='none'">`
-: "🎧";
-
-
-let favorite =
-isFavorite(station.stationuuid)
-? "♥"
-: "♡";
-
-
-div.innerHTML = `
-
-<div class="station-logo">
-${logo}
-</div>
-
-<div class="station-info">
-
-<h3>
-${escapeHtml(station.name)}
-</h3>
-
-<p>
-${escapeHtml(
-station.language ||
-station.tags ||
-"Online Radio"
-)}
-</p>
-
-</div>
-
-<button
-class="station-like ${isFavorite(station.stationuuid) ? "active":""}"
-onclick="event.stopPropagation();toggleFavorite('${station.stationuuid}')"
->
-${favorite}
-</button>
-
-`;
-
-stationList.appendChild(div);
+songsBox.appendChild(div);
 
 });
 
 }
 
 
-/* =========================
+/* =========================================
    SELECT STATION
-========================= */
+========================================= */
 
 function selectStation(index){
 
 if(!stations[index]) return;
 
+
 currentIndex = index;
 
-let station = stations[index];
-
-title.textContent = station.name;
-
-artist.textContent =
-station.language ||
-station.tags ||
-"Online Radio";
-
-statusText.textContent = "Connecting...";
-
-progress.value = 0;
-
-cover.innerHTML = station.favicon
-? `<img src="${escapeHtml(station.favicon)}"
-onerror="this.parentElement.innerHTML='🎧'">`
-: "🎧";
+const station = stations[index];
 
 
-audio.src = station.url_resolved;
+title.innerText =
+station.name || "Online Radio";
+
+
+artist.innerText =
+station.country || "Online Music";
+
+
+statusText.innerText =
+"Ready to play";
+
+
+updateFavoriteButton();
+
+
+const stream =
+station.url_resolved || station.url;
+
+
+audio.src = stream;
+
+audio.load();
+
+
+/* COUNT STATION CLICK */
+
+if(station.stationuuid){
+
+fetch(
+"https://de1.api.radio-browser.info/json/url/" +
+station.stationuuid
+).catch(()=>{});
+
+}
+
+
+/* TRY PLAY */
 
 audio.play()
 .then(()=>{
 
-playButton.textContent = "❚❚";
+playButton.innerHTML = "❚❚";
 
-statusText.textContent = "● LIVE";
+statusText.innerText =
+"▶ Playing Online";
 
 })
 .catch(error=>{
 
 console.log(error);
 
-statusText.textContent =
-"Tap Play to start";
+playButton.innerHTML = "▶";
 
-playButton.textContent = "▶";
+statusText.innerText =
+"Press ▶ to play";
 
 });
-
-
-updateMainFavorite();
 
 }
 
 
-/* =========================
+/* =========================================
    PLAY / PAUSE
-========================= */
+========================================= */
 
 function playPause(){
 
 if(!audio.src){
 
-if(stations.length > 0){
+if(stations.length){
 
 selectStation(0);
 
 }else{
 
-showToast("আগে একটি station select করুন");
+statusText.innerText =
+"Choose a station first";
 
 }
 
@@ -1012,13 +1078,16 @@ if(audio.paused){
 audio.play()
 .then(()=>{
 
-playButton.textContent = "❚❚";
-statusText.textContent = "● LIVE";
+playButton.innerHTML = "❚❚";
+
+statusText.innerText =
+"▶ Playing Online";
 
 })
 .catch(()=>{
 
-showToast("এই station এখন বাজানো যাচ্ছে না");
+statusText.innerText =
+"এই station-এর stream চালানো যাচ্ছে না";
 
 });
 
@@ -1026,445 +1095,413 @@ showToast("এই station এখন বাজানো যাচ্ছে না
 
 audio.pause();
 
-playButton.textContent = "▶";
+playButton.innerHTML = "▶";
 
-statusText.textContent = "Paused";
-
-}
-
-}
-
-
-/* =========================
-   PREVIOUS
-========================= */
-
-function previousStation(){
-
-if(stations.length === 0) return;
-
-if(currentIndex <= 0){
-
-currentIndex = stations.length - 1;
-
-}else{
-
-currentIndex--;
+statusText.innerText =
+"Paused";
 
 }
-
-selectStation(currentIndex);
 
 }
 
 
-/* =========================
+/* =========================================
    NEXT
-========================= */
+========================================= */
 
 function nextStation(){
 
-if(stations.length === 0) return;
+if(!stations.length) return;
 
-if(currentIndex >= stations.length - 1){
 
-currentIndex = 0;
+let next =
+currentIndex + 1;
 
-}else{
 
-currentIndex++;
+if(next >= stations.length){
 
-}
-
-selectStation(currentIndex);
+next = 0;
 
 }
 
 
-/* =========================
+selectStation(next);
+
+}
+
+
+/* =========================================
+   PREVIOUS
+========================================= */
+
+function previousStation(){
+
+if(!stations.length) return;
+
+
+let previous =
+currentIndex - 1;
+
+
+if(previous < 0){
+
+previous = stations.length - 1;
+
+}
+
+
+selectStation(previous);
+
+}
+
+
+/* =========================================
+   AUDIO EVENTS
+========================================= */
+
+audio.addEventListener(
+"play",
+function(){
+
+playButton.innerHTML = "❚❚";
+
+}
+);
+
+
+audio.addEventListener(
+"pause",
+function(){
+
+playButton.innerHTML = "▶";
+
+}
+);
+
+
+audio.addEventListener(
+"error",
+function(){
+
+statusText.innerText =
+"Stream unavailable — Next station try করো";
+
+playButton.innerHTML = "▶";
+
+}
+);
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+audio.addEventListener(
+"timeupdate",
+function(){
+
+if(audio.duration &&
+isFinite(audio.duration)){
+
+progress.value =
+(audio.currentTime / audio.duration) * 100;
+
+}
+
+}
+);
+
+
+progress.addEventListener(
+"input",
+function(){
+
+if(audio.duration &&
+isFinite(audio.duration)){
+
+audio.currentTime =
+(progress.value / 100) *
+audio.duration;
+
+}
+
+}
+);
+
+
+/* =========================================
    CATEGORY
-========================= */
+========================================= */
 
-function changeCategory(category,button){
+function selectCategory(category,button){
 
-currentCategory = category;
+document
+.querySelectorAll(".category")
+.forEach(btn =>
+btn.classList.remove("active")
+);
 
-showingFavorites = false;
 
-document.querySelectorAll(".category").forEach(btn=>{
-
-btn.classList.remove("active");
-
-});
+if(button){
 
 button.classList.add("active");
 
-sectionTitle.textContent =
-categorySettings[category].title;
+}
 
-fetchStations(category);
+
+loadCategory(category);
 
 }
 
 
-/* =========================
+/* =========================================
    SEARCH
-========================= */
+========================================= */
 
 function toggleSearch(){
 
-document
-.getElementById("searchBox")
-.classList.toggle("show");
+const box =
+document.getElementById("searchBox");
 
-if(
-document
-.getElementById("searchBox")
-.classList.contains("show")
-){
+box.classList.toggle("show");
 
-document.getElementById("searchInput").focus();
+
+if(box.classList.contains("show")){
+
+document
+.getElementById("searchInput")
+.focus();
 
 }
 
 }
+
+
+let searchTimer;
 
 
 function searchStations(){
 
-let query =
+clearTimeout(searchTimer);
+
+
+searchTimer =
+setTimeout(async function(){
+
+const text =
 document
 .getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+.value.trim();
 
 
-if(!query){
+if(!text){
+
+loadCategory(currentCategory);
+
+return;
+
+}
+
+
+loading.style.display = "block";
+
+songsBox.innerHTML = "";
+
+message.innerHTML = "";
+
+
+let result = [];
+
+
+result =
+await getStations({
+name:text,
+limit:40
+});
+
+
+stations =
+result.filter(station =>
+station.url_resolved ||
+station.url
+).slice(0,40);
+
+
+currentIndex = -1;
+
+loading.style.display = "none";
+
+stationTitle.innerText =
+"Search: " + text;
 
 renderStations();
 
-return;
+},500);
 
 }
 
 
-let filtered =
-stations.filter(station=>{
-
-return (
-
-(station.name || "")
-.toLowerCase()
-.includes(query)
-
-||
-
-(station.tags || "")
-.toLowerCase()
-.includes(query)
-
-||
-
-(station.language || "")
-.toLowerCase()
-.includes(query)
-
-);
-
-});
-
-
-renderCustomStations(filtered);
-
-}
-
-
-function renderCustomStations(list){
-
-stationList.innerHTML = "";
-
-if(list.length === 0){
-
-stationList.innerHTML =
-`<div class="empty">No station found.</div>`;
-
-return;
-
-}
-
-list.forEach((station)=>{
-
-let index =
-stations.indexOf(station);
-
-let div =
-document.createElement("div");
-
-div.className = "station";
-
-div.onclick=()=>{
-selectStation(index);
-};
-
-
-let logo = station.favicon
-? `<img src="${escapeHtml(station.favicon)}"
-onerror="this.style.display='none'">`
-: "🎧";
-
-
-div.innerHTML = `
-
-<div class="station-logo">
-${logo}
-</div>
-
-<div class="station-info">
-
-<h3>${escapeHtml(station.name)}</h3>
-
-<p>
-${escapeHtml(
-station.language ||
-station.tags ||
-"Online Radio"
-)}
-</p>
-
-</div>
-
-<button
-class="station-like ${isFavorite(station.stationuuid)?"active":""}"
-onclick="event.stopPropagation();toggleFavorite('${station.stationuuid}')"
->
-${isFavorite(station.stationuuid)?"♥":"♡"}
-</button>
-
-`;
-
-stationList.appendChild(div);
-
-});
-
-}
-
-
-/* =========================
+/* =========================================
    FAVORITES
-========================= */
+========================================= */
 
-function getFavorites(){
+function toggleFavorite(index){
 
-try{
+const station =
+stations[index];
 
-return JSON.parse(
-localStorage.getItem("madhuFavorites") || "[]"
-);
-
-}catch{
-
-return [];
-
-}
-
-}
+if(!station) return;
 
 
-function saveFavorites(list){
-
-localStorage.setItem(
-"madhuFavorites",
-JSON.stringify(list)
-);
-
-}
+const id =
+station.stationuuid;
 
 
-function isFavorite(id){
+if(!id) return;
 
-return getFavorites().includes(id);
-
-}
-
-
-function toggleFavorite(id){
-
-let favorites = getFavorites();
 
 if(favorites.includes(id)){
 
 favorites =
-favorites.filter(x=>x!==id);
-
-showToast("Favorite থেকে সরানো হয়েছে");
+favorites.filter(item =>
+item !== id
+);
 
 }else{
 
 favorites.push(id);
 
-showToast("Favorite-এ যোগ হয়েছে ❤️");
-
 }
 
-saveFavorites(favorites);
+
+localStorage.setItem(
+"madhuFavorites",
+JSON.stringify(favorites)
+);
+
 
 renderStations();
 
-updateMainFavorite();
+updateFavoriteButton();
 
 }
 
 
-function toggleMainFavorite(){
+function toggleFavoriteCurrent(){
 
-if(currentIndex < 0 || !stations[currentIndex]){
+if(currentIndex < 0) return;
 
-showToast("আগে একটি station select করুন");
+
+toggleFavorite(currentIndex);
+
+}
+
+
+function updateFavoriteButton(){
+
+if(currentIndex < 0){
+
+favoriteBtn.innerText = "♡";
 
 return;
 
 }
 
-toggleFavorite(
-stations[currentIndex].stationuuid
-);
+
+const station =
+stations[currentIndex];
+
+
+if(!station){
+
+favoriteBtn.innerText = "♡";
+
+return;
 
 }
 
 
-function updateMainFavorite(){
-
-if(
-currentIndex >= 0 &&
-stations[currentIndex]
-){
-
-if(
-isFavorite(
-stations[currentIndex].stationuuid
-)
-){
-
-mainFavorite.textContent = "♥";
-
-mainFavorite.classList.add("active");
-
-}else{
-
-mainFavorite.textContent = "♡";
-
-mainFavorite.classList.remove("active");
-
-}
-
-}
+favoriteBtn.innerText =
+favorites.includes(station.stationuuid)
+? "♥"
+: "♡";
 
 }
 
 
-/* =========================
+/* =========================================
    FAVORITE PAGE
-========================= */
+========================================= */
 
-function showFavorites(){
+function showFavorites(nav){
 
-setNav("favoriteNav");
+setActiveNav(nav);
 
-showingFavorites = true;
-
-sectionTitle.textContent =
+stationTitle.innerText =
 "Favorite Stations";
 
-let ids = getFavorites();
+loading.style.display = "none";
 
-let list =
-stations.filter(station=>
-ids.includes(station.stationuuid)
+songsBox.innerHTML = "";
+
+message.innerHTML = "";
+
+
+const favStations =
+stations.filter(station =>
+favorites.includes(station.stationuuid)
 );
 
-if(list.length === 0){
 
-stationList.innerHTML = `
-<div class="empty">
+if(!favStations.length){
 
-এখনও কোনো Favorite station নেই ❤️
-
-<br><br>
-
-একটি station-এর পাশে ♡ চাপুন।
-
-</div>
-`;
+message.innerHTML =
+"এখনো কোনো Favorite station নেই।<br><br>♡ চাপলে station এখানে থাকবে।";
 
 return;
 
 }
 
-renderCustomStations(list);
+
+const oldStations =
+stations;
+
+stations =
+favStations;
+
+renderStations();
+
+stations =
+oldStations;
 
 }
 
 
-/* =========================
-   LIBRARY
-========================= */
+/* =========================================
+   NAVIGATION
+========================================= */
 
-function showLibrary(){
+function setActiveNav(nav){
 
-setNav("libraryNav");
-
-showingFavorites = true;
-
-sectionTitle.textContent =
-"My Library";
-
-let ids = getFavorites();
-
-let list =
-stations.filter(station=>
-ids.includes(station.stationuuid)
+document
+.querySelectorAll(".navItem")
+.forEach(item =>
+item.classList.remove("active")
 );
 
-if(list.length === 0){
 
-stationList.innerHTML = `
-<div class="empty">
+if(nav){
 
-Your Library is empty 📂
-
-<br><br>
-
-Favorite করা station এখানে থাকবে।
-
-</div>
-`;
-
-return;
+nav.classList.add("active");
 
 }
-
-renderCustomStations(list);
 
 }
 
 
-/* =========================
-   HOME
-========================= */
+function showHome(nav){
 
-function goHome(){
-
-setNav("homeNav");
-
-showingFavorites = false;
-
-document.getElementById("searchInput").value = "";
-
-sectionTitle.textContent =
-categorySettings[currentCategory].title;
-
-fetchStations(currentCategory);
+setActiveNav(nav);
 
 window.scrollTo({
 top:0,
@@ -1474,116 +1511,43 @@ behavior:"smooth"
 }
 
 
-/* =========================
-   MUSIC
-========================= */
+function showMusic(nav){
 
-function goMusic(){
+setActiveNav(nav);
 
-setNav("musicNav");
-
-showingFavorites = false;
-
-document
-.getElementById("searchBox")
-.classList.add("show");
-
-document
-.getElementById("searchInput")
-.focus();
-
-}
-
-
-/* =========================
-   NAV ACTIVE
-========================= */
-
-function setNav(id){
-
-document
-.querySelectorAll(".nav button")
-.forEach(btn=>{
-
-btn.classList.remove("active");
-
+window.scrollTo({
+top:0,
+behavior:"smooth"
 });
 
 document
-.getElementById(id)
-.classList.add("active");
+.querySelector(".categories")
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 
-/* =========================
-   AUDIO EVENTS
-========================= */
+function showLibrary(nav){
 
-audio.addEventListener(
-"playing",
-()=>{
+setActiveNav(nav);
 
-playButton.textContent = "❚❚";
-
-statusText.textContent = "● LIVE";
-
-}
-);
-
-
-audio.addEventListener(
-"pause",
-()=>{
-
-playButton.textContent = "▶";
-
-}
-);
-
-
-audio.addEventListener(
-"error",
-()=>{
-
-statusText.textContent =
-"Station unavailable";
-
-playButton.textContent = "▶";
-
-}
-);
-
-
-/* =========================
-   TOAST
-========================= */
-
-function showToast(message){
-
-let toast =
-document.getElementById("toast");
-
-toast.textContent = message;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-},2200);
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
 
 }
 
 
-/* =========================
-   SECURITY
-========================= */
+/* =========================================
+   ESCAPE HTML
+========================================= */
 
-function escapeHtml(text){
+function escapeHTML(text){
 
-return String(text || "")
+return String(text)
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1593,11 +1557,11 @@ return String(text || "")
 }
 
 
-/* =========================
-   START APP
-========================= */
+/* =========================================
+   START
+========================================= */
 
-fetchStations("all");
+loadCategory("all");
 
 </script>
 
