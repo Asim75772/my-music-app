@@ -1,476 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Madhu Music World</title>
 
-
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#09090d;
-color:white;
-padding-bottom:90px;
+    background:#080611;
+    color:#fff;
+    padding-bottom:85px;
 }
 
 .app{
-max-width:500px;
-margin:auto;
-padding:20px;
+    max-width:520px;
+    margin:auto;
+    padding:18px;
 }
+
+/* HEADER */
 
 .header{
-display:flex;
-justify-content:space-between;
-align-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
 }
 
-.header h1{
-font-size:28px;
+.logo{
+    font-size:25px;
+    font-weight:bold;
 }
 
-.search-btn{
-border:0;
-background:none;
-color:white;
-font-size:28px;
-cursor:pointer;
+.logo span{
+    color:#ff3d91;
 }
 
-.search-box{
-display:none;
-margin-top:15px;
+.search{
+    font-size:27px;
+    cursor:pointer;
 }
 
-.search-box.active{
-display:block;
+/* SEARCH */
+
+.searchBox{
+    display:none;
+    margin-bottom:18px;
 }
 
-.search-box input{
-width:100%;
-padding:13px 15px;
-border-radius:15px;
-border:1px solid #333;
-background:#171720;
-color:white;
-font-size:16px;
-outline:none;
+.searchBox input{
+    width:100%;
+    padding:14px 18px;
+    border:1px solid #343044;
+    border-radius:18px;
+    background:#151225;
+    color:white;
+    outline:none;
+    font-size:16px;
 }
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #240044,
+        #7b1265,
+        #14102c
+    );
+    border-radius:25px;
+    padding:25px 20px;
+    min-height:190px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    margin-bottom:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+.hero:before{
+    content:"🎧";
+    position:absolute;
+    right:20px;
+    top:18px;
+    font-size:105px;
+    opacity:.75;
+}
+
+.hero h2{
+    font-size:25px;
+    position:relative;
+    z-index:2;
+}
+
+.hero p{
+    margin-top:8px;
+    color:#ddd;
+    position:relative;
+    z-index:2;
+}
+
+/* CATEGORY */
 
 .categories{
-display:flex;
-gap:10px;
-margin-top:20px;
-overflow-x:auto;
-padding-bottom:5px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:25px;
 }
 
-.categories button{
-background:#171720;
-color:white;
-border:0;
-border-radius:20px;
-padding:10px 15px;
-font-size:14px;
-white-space:nowrap;
-cursor:pointer;
+.category{
+    border:1px solid #302844;
+    background:#151225;
+    color:white;
+    padding:15px 8px;
+    border-radius:18px;
+    font-size:15px;
+    cursor:pointer;
 }
 
-.categories button.active{
-background:white;
-color:black;
+.category.active{
+    background:linear-gradient(135deg,#8d126f,#d51b76);
+    border-color:#e73591;
 }
 
-.card{
-background:#171720;
-border-radius:30px;
-padding:20px;
-margin-top:20px;
-text-align:center;
+/* PLAYER */
+
+.player{
+    background:#151320;
+    border:1px solid #28233b;
+    border-radius:28px;
+    padding:18px;
+    margin-bottom:25px;
 }
 
 .cover{
-height:280px;
-border-radius:25px;
-background:linear-gradient(135deg,#444,#111);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:95px;
+    height:260px;
+    border-radius:22px;
+    background:
+    radial-gradient(circle at 50% 40%,#9a238b,transparent 35%),
+    linear-gradient(135deg,#1a0640,#090817);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:95px;
+    margin-bottom:18px;
 }
 
-.title{
-font-size:25px;
-font-weight:bold;
-margin-top:20px;
+.nowTitle{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
 }
 
-.artist{
-color:#999;
-margin-top:8px;
+.nowArtist{
+    text-align:center;
+    color:#999;
+    margin-top:7px;
 }
 
-input[type="range"]{
-width:100%;
-margin-top:20px;
-accent-color:#4da3ff;
-cursor:pointer;
+.progress{
+    width:100%;
+    margin-top:20px;
+    accent-color:#ff3d91;
 }
 
 .controls{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:25px;
-margin-top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    margin-top:22px;
 }
 
-.controls button{
-border:0;
-background:none;
-color:white;
-font-size:30px;
-cursor:pointer;
+.control{
+    border:none;
+    background:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
 }
 
 .play{
-background:white !important;
-color:black !important;
-height:70px;
-width:70px;
-border-radius:50%;
-font-size:28px !important;
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    border:none;
+    background:#e72882;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
 }
 
-.list{
-margin-top:30px;
+.favCurrent{
+    display:block;
+    margin:15px auto 0;
+    border:none;
+    background:none;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
 }
 
-.list h2{
-font-size:27px;
+/* SECTION TITLE */
+
+.sectionTitle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
 }
+
+.sectionTitle h2{
+    font-size:22px;
+}
+
+.sectionTitle span{
+    color:#ff3d91;
+    font-size:14px;
+}
+
+/* STATIONS */
 
 .song{
-display:flex;
-align-items:center;
-background:#171720;
-padding:15px;
-border-radius:20px;
-margin-top:15px;
-cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#151225;
+    border:1px solid #29233c;
+    padding:12px;
+    border-radius:17px;
+    margin-top:10px;
+    cursor:pointer;
 }
 
-.song:active{
-transform:scale(.98);
+.song:hover{
+    border-color:#d82b82;
 }
 
-.pic{
-height:55px;
-width:55px;
-background:#292933;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-margin-right:15px;
-overflow:hidden;
+.songPic{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#5d1678,#17132c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    flex-shrink:0;
 }
 
-.pic img{
-width:100%;
-height:100%;
-object-fit:cover;
+.songInfo{
+    flex:1;
+    min-width:0;
 }
 
-.info{
-flex:1;
+.songInfo h3{
+    font-size:15px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
-.info h3{
-font-size:16px;
+.songInfo p{
+    color:#888;
+    font-size:13px;
+    margin-top:5px;
 }
 
-.info p{
-color:#888;
-font-size:13px;
-margin-top:5px;
+.songFav{
+    font-size:22px;
+    padding:5px;
+    cursor:pointer;
 }
 
-.like{
-font-size:24px;
-padding:8px;
-background:none;
-border:0;
-color:white;
-cursor:pointer;
+.songFav.active{
+    color:#ff3d6e;
 }
 
-.like.active{
-color:red;
+/* LOADING */
+
+.loading,
+.empty{
+    text-align:center;
+    padding:30px 10px;
+    color:#888;
 }
+
+/* NAV */
 
 .nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:75px;
-background:#15151b;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:1000;
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:78px;
+    background:#100e18;
+    border-top:1px solid #29243a;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:100;
 }
 
-.nav-item{
-text-align:center;
-font-size:14px;
-color:#aaa;
-cursor:pointer;
+.navItem{
+    text-align:center;
+    color:#85818e;
+    font-size:12px;
+    cursor:pointer;
+    min-width:65px;
 }
 
-.nav-item div{
-font-size:24px;
+.navIcon{
+    font-size:24px;
+    margin-bottom:4px;
 }
 
-.nav-item.active{
-color:#4da3ff;
+.navItem.active{
+    color:#ff3d91;
 }
 
-.loading{
-text-align:center;
-color:#888;
-padding:30px 10px;
-}
+/* DESKTOP */
 
-.empty{
-text-align:center;
-color:#777;
-padding:30px 10px;
-}
+@media(min-width:700px){
 
+    .app{
+        max-width:900px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="app">
 
+    <!-- HEADER -->
 
-<!-- HEADER -->
+    <div class="header">
 
-<div class="header">
+        <div class="logo">
+            Madhu Music World <span>♫</span>
+        </div>
 
-<h1>Madhu Music World 🎵</h1>
+        <div class="search" onclick="toggleSearch()">
+            🔍
+        </div>
 
-<button
-class="search-btn"
-onclick="toggleSearch()"
->
-🔍
-</button>
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="searchBox" id="searchBox">
+
+        <input
+        id="searchInput"
+        type="search"
+        placeholder="Search Bengali, Hindi, Bhajan..."
+        oninput="searchStations()">
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <h2>Feel The Music</h2>
+
+        <p>Live Online Radio • Your Music World</p>
+
+    </div>
+
+
+    <!-- CATEGORY -->
+
+    <div class="categories">
+
+        <button
+        class="category active"
+        onclick="category('all',this)">
+            🎵 All Stations
+        </button>
+
+        <button
+        class="category"
+        onclick="category('bengali',this)">
+            🎶 Bengali
+        </button>
+
+        <button
+        class="category"
+        onclick="category('hindi',this)">
+            🎵 Hindi
+        </button>
+
+        <button
+        class="category"
+        onclick="category('rabindra',this)">
+            🎼 Rabindra Sangeet
+        </button>
+
+        <button
+        class="category"
+        onclick="category('bhajan',this)">
+            🕉️ Bhajan
+        </button>
+
+    </div>
+
+
+    <!-- PLAYER -->
+
+    <div class="player">
+
+        <div class="cover">
+            🎧
+        </div>
+
+        <div
+        class="nowTitle"
+        id="title">
+            Select Station
+        </div>
+
+        <div
+        class="nowArtist"
+        id="artist">
+            Online Music
+        </div>
+
+        <input
+        class="progress"
+        type="range"
+        id="progress"
+        min="0"
+        max="100"
+        value="0">
+
+        <div class="controls">
+
+            <button
+            class="control"
+            onclick="previous()">
+                ⏮
+            </button>
+
+            <button
+            class="play"
+            id="play"
+            onclick="playPause()">
+                ▶
+            </button>
+
+            <button
+            class="control"
+            onclick="next()">
+                ⏭
+            </button>
+
+        </div>
+
+        <button
+        class="favCurrent"
+        id="favCurrent"
+        onclick="toggleCurrentFavorite()">
+            ♡
+        </button>
+
+    </div>
+
+
+    <!-- STATIONS -->
+
+    <div class="sectionTitle">
+
+        <h2 id="sectionTitle">
+            Popular Stations
+        </h2>
+
+        <span>
+            Online
+        </span>
+
+    </div>
+
+
+    <div id="songs">
+
+        <div class="loading">
+            Loading music...
+        </div>
+
+    </div>
 
 </div>
 
 
-<!-- SEARCH -->
-
-<div
-class="search-box"
-id="searchBox"
->
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search music..."
-oninput="searchMusic()"
->
-
-</div>
-
-
-<!-- CATEGORIES -->
-
-<div class="categories">
-
-<button
-id="bengaliBtn"
-class="active"
-onclick="loadCategory('bengali')"
->
-🇮🇳 Bengali
-</button>
-
-<button
-id="hindiBtn"
-onclick="loadCategory('hindi')"
->
-🇮🇳 Hindi
-</button>
-
-<button
-id="rabindraBtn"
-onclick="loadCategory('rabindra')"
->
-🎼 Rabindra Sangeet
-</button>
-
-<button
-id="bhajanBtn"
-onclick="loadCategory('bhajan')"
->
-🕉️ Bhajan
-</button>
-
-<button
-id="allBtn"
-onclick="loadCategory('all')"
->
-🎵 All
-</button>
-
-</div>
-
-
-<!-- PLAYER -->
-
-<div class="card">
-
-<div class="cover">
-🎧
-</div>
-
-<div
-class="title"
-id="title"
->
-Select Music
-</div>
-
-<div
-class="artist"
-id="artist"
->
-Choose a station
-</div>
-
-<input
-type="range"
-id="progress"
-min="0"
-max="100"
-value="0"
->
-
-<div class="controls">
-
-<button onclick="previous()">
-⏮
-</button>
-
-<button
-class="play"
-id="play"
-onclick="playPause()"
->
-▶
-</button>
-
-<button onclick="next()">
-⏭
-</button>
-
-</div>
-
-</div>
-
-
-<!-- SONG LIST -->
-
-<div
-class="list"
-id="musicList"
->
-
-<h2 id="listTitle">
-Bengali Music
-</h2>
-
-<div id="songs">
-
-<div class="loading">
-Loading online music...
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- NAVIGATION -->
+<!-- BOTTOM NAV -->
 
 <div class="nav">
 
-<div
-class="nav-item active"
-id="homeNav"
-onclick="goHome()"
->
-<div>🏠</div>
-Home
-</div>
+    <div
+    class="navItem active"
+    onclick="home(this)">
 
-<div
-class="nav-item"
-id="musicNav"
-onclick="goMusic()"
->
-<div>🎵</div>
-Music
-</div>
+        <div class="navIcon">⌂</div>
+        Home
 
-<div
-class="nav-item"
-id="favoriteNav"
-onclick="showFavorites()"
->
-<div>❤️</div>
-Favorite
-</div>
+    </div>
 
-<div
-class="nav-item"
-id="libraryNav"
-onclick="showLibrary()"
->
-<div>📂</div>
-Library
-</div>
+
+    <div
+    class="navItem"
+    onclick="music(this)">
+
+        <div class="navIcon">♫</div>
+        Music
+
+    </div>
+
+
+    <div
+    class="navItem"
+    onclick="favoritesPage(this)">
+
+        <div class="navIcon">♡</div>
+        Favorite
+
+    </div>
+
+
+    <div
+    class="navItem"
+    onclick="library(this)">
+
+        <div class="navIcon">▱</div>
+        Library
+
+    </div>
 
 </div>
 
@@ -480,32 +564,15 @@ Library
 
 <script>
 
-
 /* =========================
-   VARIABLES
+   MADHU MUSIC WORLD
 ========================= */
-
-let stations = [];
-
-let currentList = [];
-
-let currentIndex = 0;
-
-let currentCategory = "bengali";
-
-let favorites =
-JSON.parse(
-localStorage.getItem(
-"madhuFavorites"
-) || "[]"
-);
-
 
 const audio =
 document.getElementById("audio");
 
-const playButton =
-document.getElementById("play");
+const songs =
+document.getElementById("songs");
 
 const title =
 document.getElementById("title");
@@ -513,1083 +580,741 @@ document.getElementById("title");
 const artist =
 document.getElementById("artist");
 
+const play =
+document.getElementById("play");
+
 const progress =
 document.getElementById("progress");
 
-const songsBox =
-document.getElementById("songs");
+const favCurrent =
+document.getElementById("favCurrent");
+
+let stations = [];
+
+let currentIndex = -1;
+
+let currentCategory = "all";
+
+let favorites =
+JSON.parse(
+localStorage.getItem("madhuFavorites") || "[]"
+);
 
 
-
-/* =========================
-   RADIO BROWSER SERVERS
-========================= */
+/* RADIO SERVERS */
 
 const servers = [
 
 "https://de1.api.radio-browser.info",
 
-"https://nl1.api.radio-browser.info",
+"https://fr1.api.radio-browser.info",
 
-"https://at1.api.radio-browser.info"
+"https://nl1.api.radio-browser.info"
 
 ];
 
 
-
-/* =========================
-   LOAD ALL STATIONS
-========================= */
-
-async function loadStations(){
-
-songsBox.innerHTML =
-`
-<div class="loading">
-Loading online music...
-</div>
-`;
-
-let all = [];
-
-try{
-
-for(
-const server of servers
-){
-
-const url =
-server +
-"/json/stations/search" +
-"?countrycode=IN" +
-"&hidebroken=true" +
-"&order=votes" +
-"&reverse=true" +
-"&limit=100";
-
-try{
-
-const response =
-await fetch(url);
-
-if(!response.ok){
-continue;
-}
-
-const data =
-await response.json();
-
-all =
-all.concat(data);
-
-}catch(error){
-
-console.log(
-"Server error",
-server
-);
-
-}
-
-if(all.length >= 100){
-break;
-}
-
-}
-
-
-stations =
-removeDuplicates(all);
-
-loadCategory("bengali");
-
-}catch(error){
-
-console.log(error);
-
-songsBox.innerHTML =
-`
-<div class="empty">
-Internet connection problem.
-<br><br>
-Please try again.
-</div>
-`;
-
-}
-
-}
-
-
-
-/* =========================
-   REMOVE DUPLICATES
-========================= */
-
-function removeDuplicates(list){
-
-const seen = new Set();
-
-return list.filter(
-station=>{
-
-const id =
-station.stationuuid ||
-station.url_resolved ||
-station.url;
-
-if(!id){
-return false;
-}
-
-if(seen.has(id)){
-return false;
-}
-
-seen.add(id);
-
-return true;
-
-});
-
-}
-
-
-
-/* =========================
-   CATEGORY
-========================= */
-
-function loadCategory(category){
-
-currentCategory =
-category;
-
-setCategoryButton(category);
-
-let result = [];
-
-
-if(category === "bengali"){
-
-result =
-stations.filter(
-station=>{
-
-const text =
-getStationText(station);
-
-return (
-text.includes("bengali") ||
-text.includes("bangla") ||
-text.includes("kolkata") ||
-text.includes("west bengal")
-);
-
-});
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Bengali Music";
-
-}
-
-
-else if(category === "hindi"){
-
-result =
-stations.filter(
-station=>{
-
-const text =
-getStationText(station);
-
-return (
-text.includes("hindi") ||
-text.includes("bollywood")
-);
-
-});
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Hindi Music";
-
-}
-
-
-else if(category === "rabindra"){
-
-result =
-stations.filter(
-station=>{
-
-const text =
-getStationText(station);
-
-return (
-text.includes("rabindra") ||
-text.includes("tagore") ||
-text.includes("geetanjali")
-);
-
-});
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Rabindra Sangeet";
-
-}
-
-
-else if(category === "bhajan"){
-
-result =
-stations.filter(
-station=>{
-
-const text =
-getStationText(station);
-
-return (
-text.includes("bhajan") ||
-text.includes("devotional") ||
-text.includes("devotion") ||
-text.includes("spiritual")
-);
-
-});
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Bhajan";
-
-}
-
-
-else{
-
-result =
-stations;
-
-document.getElementById(
-"listTitle"
-).textContent =
-"All Music";
-
-}
-
-
-currentList =
-result.slice(0,50);
-
-renderStations();
-
-}
-
-
-
-/* =========================
-   STATION TEXT
-========================= */
-
-function getStationText(station){
-
-return (
-
-(station.name || "") +
-" " +
-(station.language || "") +
-" " +
-(station.tags || "") +
-" " +
-(station.country || "") +
-" " +
-(station.state || "")
-
-).toLowerCase();
-
-}
-
-
-
-/* =========================
-   RENDER
-========================= */
-
-function renderStations(){
-
-songsBox.innerHTML = "";
-
-if(currentList.length === 0){
-
-songsBox.innerHTML =
-`
-<div class="empty">
-এই category-তে এখন কোনো
-online station পাওয়া যায়নি।
-<br><br>
-অন্য category চেষ্টা করুন।
-</div>
-`;
-
-return;
-
-}
-
-
-currentList.forEach(
-(station,index)=>{
-
-const div =
-document.createElement("div");
-
-div.className = "song";
-
-
-let image = "🎵";
-
-
-if(station.favicon){
-
-image =
-`
-<img
-src="${escapeHTML(
-station.favicon
-)}"
-onerror="
-this.style.display='none';
-"
->
-`;
-
-}
-
-
-const favorite =
-favorites.includes(
-station.stationuuid
-);
-
-
-div.innerHTML = `
-
-<div class="pic">
-${image}
-</div>
-
-<div class="info">
-
-<h3>
-${escapeHTML(
-station.name ||
-"Online Music"
-)}
-</h3>
-
-<p>
-${escapeHTML(
-station.language ||
-station.country ||
-"Online Station"
-)}
-</p>
-
-</div>
-
-<button
-class="like ${favorite ? "active" : ""}"
-onclick="
-toggleFavorite(event,${index})
-"
->
-${favorite ? "❤️" : "♡"}
-</button>
-
-`;
-
-
-div.addEventListener(
-"click",
-function(){
-
-playStation(index);
-
-});
-
-
-songsBox.appendChild(div);
-
-});
-
-}
-
-
-
-/* =========================
-   PLAY STATION
-========================= */
-
-function playStation(index){
-
-const station =
-currentList[index];
-
-if(!station){
-return;
-}
-
-currentIndex =
-index;
-
-
-const stream =
-station.url_resolved ||
-station.url;
-
-
-if(!stream){
-
-alert(
-"এই station-এর playable stream পাওয়া যায়নি।"
-);
-
-return;
-
-}
-
-
-audio.src =
-stream;
-
-
-title.textContent =
-station.name ||
-"Online Music";
-
-
-artist.textContent =
-station.language ||
-station.country ||
-"Online Radio";
-
-
-audio.play()
-.then(
-function(){
-
-playButton.textContent =
-"⏸";
-
-}
-)
-.catch(
-function(){
-
-playButton.textContent =
-"▶";
-
-alert(
-"এই station এখন চালানো যাচ্ছে না। অন্য station চেষ্টা করুন।"
-);
-
-}
-);
-
-}
-
-
-
-/* =========================
-   PLAY PAUSE
-========================= */
-
-function playPause(){
-
-if(!audio.src){
-
-if(currentList.length > 0){
-
-playStation(
-currentIndex
-);
-
-}
-
-return;
-
-}
-
-
-if(audio.paused){
-
-audio.play()
-.then(
-function(){
-
-playButton.textContent =
-"⏸";
-
-}
-);
-
-}else{
-
-audio.pause();
-
-playButton.textContent =
-"▶";
-
-}
-
-}
-
-
-
-/* =========================
-   NEXT
-========================= */
-
-function next(){
-
-if(currentList.length === 0){
-return;
-}
-
-currentIndex++;
-
-if(
-currentIndex >=
-currentList.length
-){
-
-currentIndex = 0;
-
-}
-
-playStation(
-currentIndex
-);
-
-}
-
-
-
-/* =========================
-   PREVIOUS
-========================= */
-
-function previous(){
-
-if(currentList.length === 0){
-return;
-}
-
-currentIndex--;
-
-if(currentIndex < 0){
-
-currentIndex =
-currentList.length - 1;
-
-}
-
-playStation(
-currentIndex
-);
-
-}
-
-
-
-/* =========================
-   AUDIO EVENTS
-========================= */
-
-audio.addEventListener(
-"play",
-function(){
-
-playButton.textContent =
-"⏸";
-
-});
-
-
-audio.addEventListener(
-"pause",
-function(){
-
-playButton.textContent =
-"▶";
-
-});
-
-
-audio.addEventListener(
-"ended",
-function(){
-
-next();
-
-});
-
-
-audio.addEventListener(
-"timeupdate",
-function(){
-
-if(
-audio.duration &&
-isFinite(audio.duration)
-){
-
-progress.value =
-(
-audio.currentTime /
-audio.duration
-) * 100;
-
-}
-
-});
-
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-progress.addEventListener(
-"input",
-function(){
-
-if(
-audio.duration &&
-isFinite(audio.duration)
-){
-
-audio.currentTime =
-(
-progress.value / 100
-) *
-audio.duration;
-
-}
-
-});
-
-
-
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 function toggleSearch(){
 
-const box =
-document.getElementById(
-"searchBox"
-);
+    const box =
+    document.getElementById("searchBox");
 
-box.classList.toggle(
-"active"
-);
+    if(box.style.display === "block"){
 
-if(
-box.classList.contains(
-"active"
-)
-){
+        box.style.display = "none";
 
-document
-.getElementById(
-"searchInput"
-)
-.focus();
+    }else{
 
-}
+        box.style.display = "block";
+
+        document
+        .getElementById("searchInput")
+        .focus();
+
+    }
 
 }
 
 
-function searchMusic(){
+/* API */
 
-const query =
-document
-.getElementById(
-"searchInput"
-)
-.value
-.toLowerCase()
-.trim();
+async function api(url){
 
+    for(let server of servers){
 
-if(query === ""){
+        try{
 
-loadCategory(
-currentCategory
-);
+            const response =
+            await fetch(server + url);
 
-return;
+            if(response.ok){
+
+                return await response.json();
+
+            }
+
+        }catch(e){
+
+            console.log(e);
+
+        }
+
+    }
+
+    return [];
 
 }
 
 
-const result =
-stations.filter(
-station=>{
+/* LOAD */
 
-return getStationText(
-station
-).includes(query);
+async function loadStations(){
+
+    songs.innerHTML =
+    '<div class="loading">Loading online stations...</div>';
+
+    let url =
+    "/json/stations/search?limit=50&hidebroken=true&order=votes&reverse=true";
+
+    if(currentCategory === "bengali"){
+
+        url += "&tag=bengali";
+
+    }
+
+    if(currentCategory === "hindi"){
+
+        url += "&tag=hindi";
+
+    }
+
+    if(currentCategory === "rabindra"){
+
+        url += "&tag=rabindra";
+
+    }
+
+    if(currentCategory === "bhajan"){
+
+        url += "&tag=bhajan";
+
+    }
+
+    const data =
+    await api(url);
+
+    stations =
+    data.filter(s =>
+    s.url_resolved || s.url
+    );
+
+    render();
+
+}
+
+
+/* RENDER */
+
+function render(){
+
+    songs.innerHTML = "";
+
+    if(!stations.length){
+
+        songs.innerHTML =
+        '<div class="empty">No online station found.</div>';
+
+        return;
+
+    }
+
+
+    stations.forEach((station,index)=>{
+
+        const div =
+        document.createElement("div");
+
+        div.className = "song";
+
+        const id =
+        station.stationuuid;
+
+        const isFav =
+        favorites.includes(id);
+
+
+        div.innerHTML = `
+
+            <div class="songPic">
+                🎧
+            </div>
+
+            <div class="songInfo">
+
+                <h3>
+                    ${safe(station.name || "Online Radio")}
+                </h3>
+
+                <p>
+                    ${safe(
+                        station.language ||
+                        station.country ||
+                        "Online"
+                    )}
+                </p>
+
+            </div>
+
+            <div
+            class="songFav ${isFav ? "active" : ""}"
+            onclick="
+            event.stopPropagation();
+            toggleFavorite(${index})
+            ">
+
+                ${isFav ? "♥" : "♡"}
+
+            </div>
+
+        `;
+
+
+        div.onclick = () =>
+        playStation(index);
+
+        songs.appendChild(div);
+
+    });
+
+}
+
+
+/* PLAY */
+
+function playStation(index){
+
+    if(!stations[index]) return;
+
+    currentIndex = index;
+
+    const station =
+    stations[index];
+
+    const stream =
+    station.url_resolved ||
+    station.url;
+
+    audio.src = stream;
+
+    title.textContent =
+    station.name || "Online Music";
+
+    artist.textContent =
+    station.language ||
+    station.country ||
+    "Online Radio";
+
+    updateCurrentFavorite();
+
+    audio.play()
+    .then(()=>{
+
+        play.innerHTML = "❚❚";
+
+    })
+    .catch(()=>{
+
+        alert(
+        "এই stationটি এখন play হচ্ছে না। অন্য station চেষ্টা করুন।"
+        );
+
+    });
+
+}
+
+
+/* PLAY PAUSE */
+
+function playPause(){
+
+    if(!audio.src){
+
+        if(stations.length){
+
+            playStation(0);
+
+        }
+
+        return;
+
+    }
+
+
+    if(audio.paused){
+
+        audio.play();
+
+    }else{
+
+        audio.pause();
+
+    }
+
+}
+
+
+/* AUDIO EVENTS */
+
+audio.addEventListener("play",()=>{
+
+    play.innerHTML = "❚❚";
 
 });
 
 
-currentList =
-result.slice(0,50);
+audio.addEventListener("pause",()=>{
 
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Search Results";
-
-
-renderStations();
-
-}
-
-
-
-/* =========================
-   FAVORITE
-========================= */
-
-function toggleFavorite(
-event,
-index
-){
-
-event.stopPropagation();
-
-const station =
-currentList[index];
-
-if(!station){
-return;
-}
-
-
-const id =
-station.stationuuid;
-
-
-if(favorites.includes(id)){
-
-favorites =
-favorites.filter(
-item => item !== id
-);
-
-}else{
-
-favorites.push(id);
-
-}
-
-
-localStorage.setItem(
-"madhuFavorites",
-JSON.stringify(
-favorites
-)
-);
-
-
-renderStations();
-
-}
-
-
-
-/* =========================
-   FAVORITES
-========================= */
-
-function showFavorites(){
-
-setActive(
-"favoriteNav"
-);
-
-document.getElementById(
-"listTitle"
-).textContent =
-"Favorite Music";
-
-
-currentList =
-stations.filter(
-station =>
-favorites.includes(
-station.stationuuid
-)
-);
-
-
-renderStations();
-
-scrollToList();
-
-}
-
-
-
-/* =========================
-   LIBRARY
-========================= */
-
-function showLibrary(){
-
-setActive(
-"libraryNav"
-);
-
-document.getElementById(
-"listTitle"
-).textContent =
-"My Library";
-
-
-currentList =
-stations.slice(0,50);
-
-renderStations();
-
-scrollToList();
-
-}
-
-
-
-/* =========================
-   HOME
-========================= */
-
-function goHome(){
-
-setActive(
-"homeNav"
-);
-
-loadCategory(
-"bengali"
-);
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
+    play.innerHTML = "▶";
 
 });
 
-}
 
+/* NEXT */
 
+function next(){
 
-/* =========================
-   MUSIC
-========================= */
+    if(!stations.length) return;
 
-function goMusic(){
+    currentIndex++;
 
-setActive(
-"musicNav"
-);
+    if(currentIndex >= stations.length){
 
-scrollToList();
+        currentIndex = 0;
 
-}
+    }
 
-
-
-/* =========================
-   CATEGORY BUTTON
-========================= */
-
-function setCategoryButton(
-category
-){
-
-document
-.querySelectorAll(
-".categories button"
-)
-.forEach(
-button =>
-button.classList.remove(
-"active"
-)
-);
-
-
-if(category === "bengali"){
-
-document.getElementById(
-"bengaliBtn"
-).classList.add(
-"active"
-);
-
-}
-
-else if(category === "hindi"){
-
-document.getElementById(
-"hindiBtn"
-).classList.add(
-"active"
-);
-
-}
-
-else if(category === "rabindra"){
-
-document.getElementById(
-"rabindraBtn"
-).classList.add(
-"active"
-);
-
-}
-
-else if(category === "bhajan"){
-
-document.getElementById(
-"bhajanBtn"
-).classList.add(
-"active"
-);
-
-}
-
-else{
-
-document.getElementById(
-"allBtn"
-).classList.add(
-"active"
-);
-
-}
+    playStation(currentIndex);
 
 }
 
 
+/* PREVIOUS */
 
-/* =========================
-   NAV ACTIVE
-========================= */
+function previous(){
 
-function setActive(id){
+    if(!stations.length) return;
 
-document
-.querySelectorAll(
-".nav-item"
-)
-.forEach(
-item =>
-item.classList.remove(
-"active"
-)
-);
+    currentIndex--;
 
+    if(currentIndex < 0){
 
-document
-.getElementById(id)
-.classList.add(
-"active"
-);
+        currentIndex =
+        stations.length - 1;
+
+    }
+
+    playStation(currentIndex);
 
 }
 
 
+/* PROGRESS */
 
-/* =========================
-   SCROLL
-========================= */
+audio.addEventListener(
+"timeupdate",
+()=>{
 
-function scrollToList(){
+    if(
+        audio.duration &&
+        isFinite(audio.duration)
+    ){
 
-document
-.getElementById(
-"musicList"
-)
-.scrollIntoView({
+        progress.value =
+        (audio.currentTime /
+        audio.duration) * 100;
 
-behavior:"smooth"
+    }
 
 });
 
+
+progress.addEventListener(
+"input",
+()=>{
+
+    if(
+        audio.duration &&
+        isFinite(audio.duration)
+    ){
+
+        audio.currentTime =
+        audio.duration *
+        progress.value / 100;
+
+    }
+
+});
+
+
+/* CATEGORY */
+
+function category(type,button){
+
+    currentCategory = type;
+
+    document
+    .querySelectorAll(".category")
+    .forEach(b =>
+    b.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+
+    if(type === "all"){
+
+        document.getElementById(
+        "sectionTitle"
+        ).textContent =
+        "Popular Stations";
+
+    }
+
+    if(type === "bengali"){
+
+        document.getElementById(
+        "sectionTitle"
+        ).textContent =
+        "Bengali Music";
+
+    }
+
+    if(type === "hindi"){
+
+        document.getElementById(
+        "sectionTitle"
+        ).textContent =
+        "Hindi Music";
+
+    }
+
+    if(type === "rabindra"){
+
+        document.getElementById(
+        "sectionTitle"
+        ).textContent =
+        "Rabindra Sangeet";
+
+    }
+
+    if(type === "bhajan"){
+
+        document.getElementById(
+        "sectionTitle"
+        ).textContent =
+        "Bhajan";
+
+    }
+
+
+    loadStations();
+
 }
 
 
+/* SEARCH */
 
-/* =========================
-   ESCAPE HTML
-========================= */
+async function searchStations(){
 
-function escapeHTML(text){
+    const q =
+    document
+    .getElementById("searchInput")
+    .value
+    .trim();
 
-return String(text)
 
-.replace(
-/&/g,
-"&amp;"
-)
+    if(q.length < 2){
 
-.replace(
-/</g,
-"&lt;"
-)
+        loadStations();
 
-.replace(
-/>/g,
-"&gt;"
-)
+        return;
 
-.replace(
-/"/g,
-"&quot;"
-)
+    }
 
-.replace(
-/'/g,
-"&#039;"
-);
+
+    songs.innerHTML =
+    '<div class="loading">Searching...</div>';
+
+
+    const data =
+    await api(
+        "/json/stations/search?name=" +
+        encodeURIComponent(q) +
+        "&limit=50&hidebroken=true"
+    );
+
+
+    stations =
+    data.filter(s =>
+    s.url_resolved || s.url
+    );
+
+
+    document.getElementById(
+    "sectionTitle"
+    ).textContent =
+    "Search Results";
+
+
+    render();
 
 }
 
 
+/* FAVORITE */
 
-/* =========================
-   START
-========================= */
+function toggleFavorite(index){
+
+    const station =
+    stations[index];
+
+    if(!station) return;
+
+    const id =
+    station.stationuuid;
+
+
+    if(favorites.includes(id)){
+
+        favorites =
+        favorites.filter(x => x !== id);
+
+    }else{
+
+        favorites.push(id);
+
+    }
+
+
+    localStorage.setItem(
+        "madhuFavorites",
+        JSON.stringify(favorites)
+    );
+
+
+    render();
+
+    updateCurrentFavorite();
+
+}
+
+
+/* CURRENT FAVORITE */
+
+function toggleCurrentFavorite(){
+
+    if(currentIndex < 0) return;
+
+    toggleFavorite(currentIndex);
+
+}
+
+
+/* UPDATE FAVORITE */
+
+function updateCurrentFavorite(){
+
+    if(currentIndex < 0){
+
+        favCurrent.innerHTML = "♡";
+
+        return;
+
+    }
+
+
+    const station =
+    stations[currentIndex];
+
+    if(!station) return;
+
+
+    if(
+        favorites.includes(
+            station.stationuuid
+        )
+    ){
+
+        favCurrent.innerHTML = "♥";
+
+        favCurrent.style.color =
+        "#ff3d6e";
+
+    }else{
+
+        favCurrent.innerHTML = "♡";
+
+        favCurrent.style.color =
+        "white";
+
+    }
+
+}
+
+
+/* FAVORITES PAGE */
+
+async function favoritesPage(nav){
+
+    activeNav(nav);
+
+    document.getElementById(
+    "sectionTitle"
+    ).textContent =
+    "My Favorites";
+
+
+    if(!favorites.length){
+
+        stations = [];
+
+        songs.innerHTML =
+        '<div class="empty">❤️ আপনার Favorite station এখানে থাকবে।</div>';
+
+        return;
+
+    }
+
+
+    const data =
+    await api(
+    "/json/stations/search?limit=100&hidebroken=true"
+    );
+
+
+    stations =
+    data.filter(s =>
+    favorites.includes(
+        s.stationuuid
+    )
+    );
+
+
+    render();
+
+}
+
+
+/* LIBRARY */
+
+function library(nav){
+
+    activeNav(nav);
+
+    document.getElementById(
+    "sectionTitle"
+    ).textContent =
+    "My Library";
+
+
+    if(!favorites.length){
+
+        stations = [];
+
+        songs.innerHTML =
+        '<div class="empty">📂 Library এখন খালি।<br><br>পছন্দের গান/স্টেশন Favorite করুন।</div>';
+
+        return;
+
+    }
+
+
+    favoritesPage(nav);
+
+}
+
+
+/* HOME */
+
+function home(nav){
+
+    activeNav(nav);
+
+    currentCategory = "all";
+
+    document
+    .querySelectorAll(".category")
+    .forEach((b,i)=>
+    b.classList.toggle(
+        "active",
+        i === 0
+    ));
+
+
+    document.getElementById(
+    "sectionTitle"
+    ).textContent =
+    "Popular Stations";
+
+
+    loadStations();
+
+}
+
+
+/* MUSIC */
+
+function music(nav){
+
+    activeNav(nav);
+
+    document.getElementById(
+    "sectionTitle"
+    ).textContent =
+    "Music";
+
+
+    loadStations();
+
+}
+
+
+/* NAV ACTIVE */
+
+function activeNav(nav){
+
+    document
+    .querySelectorAll(".navItem")
+    .forEach(n =>
+    n.classList.remove("active")
+    );
+
+    nav.classList.add("active");
+
+}
+
+
+/* SAFE HTML */
+
+function safe(text){
+
+    return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* START */
 
 loadStations();
 
-
 </script>
 
-
 </body>
-
 </html>
