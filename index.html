@@ -4,776 +4,704 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Madhu Music World 🎵</title>
-
-<meta name="description"
-content="Madhu Music World - Bengali, Retro, Evergreen and Oldies Radio">
+<title>Madhu Music World</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  background:#050509;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-  padding-bottom:150px;
+    background:#05050b;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    padding-bottom:170px;
 }
 
 button{
-  font-family:inherit;
+    font-family:inherit;
 }
 
 .header{
-  height:110px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:20px 28px;
-  border-bottom:1px solid #252532;
-  background:#07070c;
-  position:sticky;
-  top:0;
-  z-index:50;
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    border-bottom:1px solid #242331;
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(5,5,11,.94);
+    backdrop-filter:blur(15px);
 }
 
 .logo{
-  font-size:31px;
-  font-weight:800;
-  white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:30px;
+    font-weight:700;
 }
 
 .logo span{
-  font-size:35px;
-  margin-left:7px;
+    color:#ff00a8;
+    font-size:38px;
 }
 
-.searchBtn{
-  width:62px;
-  height:62px;
-  border-radius:50%;
-  border:1px solid #343444;
-  background:#11111b;
-  color:#fff;
-  font-size:32px;
-  cursor:pointer;
+.menu{
+    font-size:36px;
+    cursor:pointer;
 }
 
-.container{
-  width:100%;
-  max-width:1050px;
-  margin:auto;
-  padding:28px;
+.search{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:1px solid #363445;
+    background:#11111b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+    cursor:pointer;
 }
 
 /* HERO */
 
 .hero{
-  position:relative;
-  min-height:310px;
-  border-radius:32px;
-  overflow:hidden;
-  border:1px solid #5b0d83;
-  background:
-    radial-gradient(circle at 75% 45%,#e900c9 0%,#7b00a9 22%,#28004b 52%,#100018 100%);
-  box-shadow:
-    0 0 35px rgba(255,0,220,.18),
-    inset 0 0 70px rgba(255,0,220,.10);
-  display:flex;
-  align-items:center;
-  padding:42px;
-  margin-bottom:28px;
+    margin:28px 3%;
+    min-height:285px;
+    border-radius:30px;
+    border:1px solid #ff00a8;
+    background:
+      radial-gradient(circle at 78% 45%,#d600a7 0%,#5a007c 30%,#150022 65%,#08000e 100%);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    padding:40px;
+    box-shadow:0 0 35px rgba(255,0,168,.18);
 }
 
 .hero:after{
-  content:"🎧";
-  position:absolute;
-  right:7%;
-  top:18%;
-  font-size:120px;
-  opacity:.18;
-  transform:rotate(-7deg);
+    content:"🎧";
+    position:absolute;
+    right:7%;
+    top:20px;
+    font-size:150px;
+    opacity:.8;
+    filter:drop-shadow(0 0 25px #ff00b7);
 }
 
 .heroText{
-  position:relative;
-  z-index:2;
-  max-width:62%;
+    position:relative;
+    z-index:2;
 }
 
 .hero h1{
-  font-size:54px;
-  line-height:1.05;
-  margin-bottom:18px;
+    font-size:60px;
+    margin-bottom:16px;
 }
 
 .hero p{
-  color:#ddd;
-  font-size:22px;
-  line-height:1.4;
+    font-size:25px;
+    color:#ddd;
 }
 
-/* CATEGORY */
+.hero p b{
+    color:#ff00a8;
+}
+
+/* CATEGORIES */
 
 .categories{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:35px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin:0 3%;
 }
 
 .category{
-  min-height:125px;
-  border:1px solid #2d2d3c;
-  border-radius:22px;
-  background:linear-gradient(145deg,#12121d,#0c0c14);
-  color:#fff;
-  cursor:pointer;
-  padding:15px;
-  transition:.2s;
+    min-height:145px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#13131e,#090911);
+    border:1px solid #343344;
+    color:white;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:.2s;
 }
 
 .category:hover{
-  transform:translateY(-3px);
-  border-color:#ff00b8;
+    transform:translateY(-3px);
+    border-color:#ff00a8;
+    box-shadow:0 0 20px rgba(255,0,168,.25);
 }
 
 .category.active{
-  background:linear-gradient(135deg,#ff009d,#b500ff);
-  border-color:#ff39d0;
-  box-shadow:0 0 25px rgba(255,0,190,.25);
+    border:2px solid #ff00a8;
+    background:linear-gradient(145deg,#31002e,#100010);
+    box-shadow:0 0 25px rgba(255,0,168,.25);
 }
 
-.catIcon{
-  display:block;
-  font-size:37px;
-  margin-bottom:8px;
+.icon{
+    font-size:48px;
+    margin-bottom:10px;
 }
 
-.catTitle{
-  font-size:18px;
-  font-weight:700;
+.category strong{
+    font-size:21px;
 }
 
-.catSub{
-  color:#aaa;
-  font-size:13px;
-  margin-top:5px;
+.category small{
+    color:#aaa;
+    font-size:15px;
+    margin-top:7px;
 }
 
 /* SECTION */
 
-.sectionTitle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:20px 4px 16px;
+.section{
+    margin:32px 3% 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.sectionTitle h2{
-  font-size:28px;
+.section h2{
+    font-size:30px;
 }
 
-.viewAll{
-  color:#ff00b7;
-  font-weight:bold;
-  cursor:pointer;
+.view{
+    color:#ff00a8;
+    font-size:19px;
+    cursor:pointer;
 }
 
 /* STATIONS */
 
 #stations{
-  display:flex;
-  flex-direction:column;
-  gap:13px;
+    margin:0 3%;
 }
 
 .station{
-  min-height:105px;
-  border:1px solid #292936;
-  border-radius:24px;
-  background:linear-gradient(145deg,#12121c,#0d0d15);
-  display:flex;
-  align-items:center;
-  padding:14px 16px;
-  gap:17px;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
+    min-height:92px;
+    margin-bottom:10px;
+    padding:12px 18px;
+    border-radius:20px;
+    border:1px solid #292837;
+    background:linear-gradient(100deg,#11111b,#0b0b13);
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
 .stationLogo{
-  width:72px;
-  height:72px;
-  min-width:72px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#210052,#7000a8);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:34px;
-  overflow:hidden;
-}
-
-.stationLogo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+    width:68px;
+    height:68px;
+    border-radius:17px;
+    object-fit:cover;
+    background:#210040;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    flex-shrink:0;
 }
 
 .stationInfo{
-  flex:1;
-  min-width:0;
+    flex:1;
+    min-width:0;
 }
 
 .stationName{
-  font-size:20px;
-  font-weight:700;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+    font-size:20px;
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .stationMeta{
-  color:#999;
-  font-size:15px;
-  margin-top:7px;
+    margin-top:7px;
+    color:#999;
+    font-size:15px;
 }
 
-.stationButtons{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-.favBtn{
-  width:44px;
-  height:44px;
-  border:0;
-  background:transparent;
-  color:#ff18b8;
-  font-size:29px;
-  cursor:pointer;
+.favorite{
+    font-size:30px;
+    color:#ff00a8;
+    cursor:pointer;
 }
 
 .playBtn{
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  border:0;
-  background:linear-gradient(135deg,#ff009d,#ff00c8);
-  color:#fff;
-  font-size:24px;
-  cursor:pointer;
-  box-shadow:0 0 20px rgba(255,0,180,.25);
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    border:none;
+    background:#ff009f;
+    color:white;
+    font-size:23px;
+    cursor:pointer;
+    box-shadow:0 0 18px rgba(255,0,159,.35);
 }
 
 .playBtn.playing{
-  background:#7700ff;
+    background:#7b00ff;
 }
 
 /* LOADING */
 
 .loading{
-  text-align:center;
-  color:#aaa;
-  padding:35px;
-  font-size:17px;
+    text-align:center;
+    padding:45px 10px;
+    color:#aaa;
+    font-size:18px;
 }
 
-/* ERROR */
-
-.errorBox{
-  background:#17121c;
-  border:1px solid #54214e;
-  border-radius:20px;
-  padding:22px;
-  text-align:center;
-  color:#ccc;
+.error{
+    text-align:center;
+    padding:30px;
+    color:#ff80d0;
 }
 
 /* PLAYER */
 
 .player{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:72px;
-  min-height:92px;
-  background:rgba(14,14,23,.97);
-  backdrop-filter:blur(15px);
-  border-top:1px solid #30303d;
-  z-index:90;
-  display:flex;
-  align-items:center;
-  padding:10px 22px;
-  gap:15px;
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:78px;
+    min-height:82px;
+    border:1px solid #ff00a8;
+    border-radius:22px;
+    background:rgba(15,7,24,.96);
+    backdrop-filter:blur(18px);
+    z-index:50;
+    display:flex;
+    align-items:center;
+    padding:10px 16px;
+    box-shadow:0 0 30px rgba(255,0,168,.18);
 }
 
-.playerIcon{
-  width:62px;
-  height:62px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#280064,#7700b5);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  flex-shrink:0;
+.playerLogo{
+    width:58px;
+    height:58px;
+    border-radius:15px;
+    background:#27004c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    flex-shrink:0;
 }
 
 .playerInfo{
-  flex:1;
-  min-width:0;
+    flex:1;
+    margin-left:15px;
+    overflow:hidden;
 }
 
 .playerName{
-  font-weight:bold;
-  font-size:17px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+    font-size:18px;
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .playerStatus{
-  color:#aaa;
-  margin-top:4px;
-  font-size:13px;
+    color:#aaa;
+    margin-top:5px;
 }
 
-.playerControls{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.mainPlay{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:none;
+    background:#ff009f;
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
 }
 
-.control{
-  border:0;
-  background:transparent;
-  color:#fff;
-  font-size:24px;
-  cursor:pointer;
+/* BOTTOM */
+
+.bottom{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:78px;
+    background:#0d0d16;
+    border-top:1px solid #292838;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:60;
 }
 
-.mainControl{
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:#ff00ae;
-  color:#fff;
-  border:0;
-  font-size:22px;
-  cursor:pointer;
+.nav{
+    color:#888;
+    text-align:center;
+    font-size:14px;
+    cursor:pointer;
 }
 
-/* NAV */
-
-.bottomNav{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:72px;
-  background:#101018;
-  border-top:1px solid #292934;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  z-index:100;
+.nav div{
+    font-size:29px;
+    margin-bottom:3px;
 }
 
-.navItem{
-  border:0;
-  background:transparent;
-  color:#888;
-  font-size:13px;
-  cursor:pointer;
-}
-
-.navIcon{
-  display:block;
-  font-size:27px;
-  margin-bottom:3px;
-}
-
-.navItem.active{
-  color:#ff00b7;
+.nav.active{
+    color:#ff00a8;
 }
 
 /* SEARCH */
 
-.searchPanel{
-  display:none;
-  margin-bottom:25px;
+.searchBox{
+    display:none;
+    margin:15px 3%;
 }
 
-.searchPanel.show{
-  display:block;
+.searchBox input{
+    width:100%;
+    padding:16px 20px;
+    border-radius:16px;
+    border:1px solid #ff00a8;
+    outline:none;
+    background:#11111a;
+    color:white;
+    font-size:17px;
 }
-
-.searchInput{
-  width:100%;
-  padding:17px 20px;
-  border-radius:18px;
-  border:1px solid #393947;
-  background:#12121b;
-  color:#fff;
-  font-size:17px;
-  outline:none;
-}
-
-.searchInput:focus{
-  border-color:#ff00b7;
-}
-
-/* MOBILE */
 
 @media(max-width:700px){
 
-  .header{
-    height:95px;
-    padding:15px 20px;
-  }
+    .header{
+        height:75px;
+        padding:0 18px;
+    }
 
-  .logo{
-    font-size:27px;
-  }
+    .logo{
+        font-size:24px;
+    }
 
-  .logo span{
-    font-size:31px;
-  }
+    .logo span{
+        font-size:30px;
+    }
 
-  .searchBtn{
-    width:55px;
-    height:55px;
-    font-size:28px;
-  }
+    .menu{
+        display:none;
+    }
 
-  .container{
-    padding:22px 18px;
-  }
+    .search{
+        width:50px;
+        height:50px;
+        font-size:26px;
+    }
 
-  .hero{
-    min-height:300px;
-    padding:30px 28px;
-    border-radius:28px;
-  }
+    .hero{
+        min-height:300px;
+        margin:18px 3%;
+        padding:28px;
+    }
 
-  .heroText{
-    max-width:100%;
-  }
+    .hero h1{
+        font-size:43px;
+    }
 
-  .hero h1{
-    font-size:43px;
-  }
+    .hero p{
+        font-size:20px;
+        max-width:320px;
+    }
 
-  .hero p{
-    font-size:19px;
-  }
+    .hero:after{
+        font-size:100px;
+        right:2%;
+        top:30px;
+        opacity:.45;
+    }
 
-  .hero:after{
-    right:4%;
-    top:12%;
-    font-size:105px;
-  }
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
+    .category{
+        min-height:125px;
+    }
 
-  .category{
-    min-height:120px;
-  }
+    .icon{
+        font-size:40px;
+    }
 
-  .station{
-    padding:12px;
-  }
+    .category strong{
+        font-size:18px;
+    }
 
-  .stationLogo{
-    width:62px;
-    height:62px;
-    min-width:62px;
-  }
+    .section h2{
+        font-size:24px;
+    }
 
-  .stationName{
-    font-size:17px;
-  }
+    .station{
+        padding:10px;
+        gap:12px;
+    }
 
-  .stationMeta{
-    font-size:13px;
-  }
+    .stationLogo{
+        width:58px;
+        height:58px;
+    }
 
-  .favBtn{
-    display:none;
-  }
+    .stationName{
+        font-size:17px;
+    }
 
-  .playBtn{
-    width:52px;
-    height:52px;
-  }
+    .stationMeta{
+        font-size:13px;
+    }
 
-  .player{
-    bottom:72px;
-    padding:9px 14px;
-  }
+    .favorite{
+        display:none;
+    }
 
-  .playerIcon{
-    width:54px;
-    height:54px;
-  }
+    .playBtn{
+        width:50px;
+        height:50px;
+    }
 
-  .mainControl{
-    width:54px;
-    height:54px;
-  }
+    .player{
+        bottom:78px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header class="header">
 
-  <div class="logo">
-    Madhu Music World <span>🎵</span>
-  </div>
+    <div class="menu">☰</div>
 
-  <button class="searchBtn" onclick="toggleSearch()">🔎</button>
+    <div class="logo">
+        Madhu Music World <span>♫</span>
+    </div>
+
+    <div class="search" onclick="toggleSearch()">⌕</div>
 
 </header>
 
+<!-- SEARCH -->
 
-<main class="container">
-
-  <div id="searchPanel" class="searchPanel">
+<div class="searchBox" id="searchBox">
     <input
-      id="searchInput"
-      class="searchInput"
-      type="search"
-      placeholder="স্টেশনের নাম লিখে খুঁজুন..."
-      oninput="searchStations()">
-  </div>
+        id="searchInput"
+        type="text"
+        placeholder="স্টেশনের নাম খুঁজুন..."
+        oninput="searchStations()">
+</div>
 
+<!-- HERO -->
 
-  <!-- HERO -->
-
-  <section class="hero">
+<section class="hero">
 
     <div class="heroText">
 
-      <h1>Feel The Music</h1>
+        <h1>Feel The Music</h1>
 
-      <p>
-        Live Radio • Bengali • Retro • Evergreen
-      </p>
+        <p>
+            Live Radio <b>•</b>
+            Bengali <b>•</b>
+            Retro <b>•</b>
+            Evergreen
+        </p>
 
     </div>
 
-  </section>
+</section>
 
+<!-- CATEGORIES -->
 
-  <!-- CATEGORY -->
+<section class="categories">
 
-  <div class="categories">
-
-    <button class="category active" onclick="loadCategory('all',this)">
-      <span class="catIcon">📻</span>
-      <span class="catTitle">All Stations</span>
-      <div class="catSub">Live Radio</div>
+    <button class="category active"
+            onclick="loadCategory('all',this)">
+        <div class="icon">📻</div>
+        <strong>All Stations</strong>
+        <small>Live Radio</small>
     </button>
 
-    <button class="category" onclick="loadCategory('bengali',this)">
-      <span class="catIcon">🎵</span>
-      <span class="catTitle">Bengali</span>
-      <div class="catSub">Bangla Radio</div>
+    <button class="category"
+            onclick="loadCategory('bengali',this)">
+        <div class="icon">🎵</div>
+        <strong>বাংলা</strong>
+        <small>Bangla Radio</small>
     </button>
 
-    <button class="category" onclick="loadCategory('old',this)">
-      <span class="catIcon">🕰️</span>
-      <span class="catTitle">Old Bengali</span>
-      <div class="catSub">70s • 80s • 90s</div>
+    <button class="category"
+            onclick="loadCategory('oldbengali',this)">
+        <div class="icon">🕰️</div>
+        <strong>পুরোনো বাংলা</strong>
+        <small>70s • 80s • 90s</small>
     </button>
 
-    <button class="category" onclick="loadCategory('hindi',this)">
-      <span class="catIcon">🎶</span>
-      <span class="catTitle">Hindi Oldies</span>
-      <div class="catSub">Retro Hits</div>
+    <button class="category"
+            onclick="loadCategory('hindi',this)">
+        <div class="icon">🎶</div>
+        <strong>Hindi Oldies</strong>
+        <small>Retro Hits</small>
     </button>
 
-    <button class="category" onclick="loadCategory('english',this)">
-      <span class="catIcon">🎸</span>
-      <span class="catTitle">English Retro</span>
-      <div class="catSub">Classic Hits</div>
+    <button class="category"
+            onclick="loadCategory('english',this)">
+        <div class="icon">🎸</div>
+        <strong>English Retro</strong>
+        <small>Classic Hits</small>
     </button>
 
-    <button class="category" onclick="loadCategory('rabindra',this)">
-      <span class="catIcon">🎼</span>
-      <span class="catTitle">Rabindra Sangeet</span>
-      <div class="catSub">রবীন্দ্রসঙ্গীত</div>
+    <button class="category"
+            onclick="loadCategory('rabindra',this)">
+        <div class="icon">🎼</div>
+        <strong>রবীন্দ্রসঙ্গীত</strong>
+        <small>Rabindra Sangeet</small>
     </button>
 
-    <button class="category" onclick="loadCategory('bhajan',this)">
-      <span class="catIcon">🕉️</span>
-      <span class="catTitle">Bhajan</span>
-      <div class="catSub">Devotional</div>
+    <button class="category"
+            onclick="loadCategory('bhajan',this)">
+        <div class="icon">🕉️</div>
+        <strong>Bhajan</strong>
+        <small>Devotional</small>
     </button>
 
-    <button class="category" onclick="showFavorites()">
-      <span class="catIcon">💜</span>
-      <span class="catTitle">My Favorite</span>
-      <div class="catSub">Saved Stations</div>
+    <button class="category"
+            onclick="showFavorites()">
+        <div class="icon">💜</div>
+        <strong>My Favorite</strong>
+        <small>Saved Stations</small>
     </button>
 
-  </div>
+</section>
 
+<!-- TITLE -->
 
-  <div class="sectionTitle">
+<section class="section">
 
-    <h2 id="sectionHeading">
-      Popular Stations
-    </h2>
+    <h2>Popular Stations</h2>
 
-    <span class="viewAll" onclick="loadCategory('all',null)">
-      View All ›
-    </span>
+    <div class="view"
+         onclick="loadCategory('all')">
+        View All ›
+    </div>
 
-  </div>
+</section>
 
+<!-- STATIONS -->
 
-  <div id="stations">
+<div id="stations">
 
     <div class="loading">
-      🎵 লাইভ স্টেশন খোঁজা হচ্ছে...
+        🎧 স্টেশন খোঁজা হচ্ছে...
     </div>
 
-  </div>
-
-</main>
-
+</div>
 
 <!-- PLAYER -->
 
 <div class="player">
 
-  <div class="playerIcon" id="playerIcon">
-    🎧
-  </div>
-
-  <div class="playerInfo">
-
-    <div class="playerName" id="playerName">
-      কোনো স্টেশন চলছে না
+    <div class="playerLogo" id="playerLogo">
+        🎧
     </div>
 
-    <div class="playerStatus" id="playerStatus">
-      একটি Radio Station নির্বাচন করুন
+    <div class="playerInfo">
+
+        <div class="playerName" id="playerName">
+            কোনো স্টেশন চলছে না
+        </div>
+
+        <div class="playerStatus" id="playerStatus">
+            একটি Radio Station নির্বাচন করুন
+        </div>
+
     </div>
 
-  </div>
-
-  <div class="playerControls">
-
-    <button class="control" onclick="previousStation()">
-      ⏮
+    <button class="mainPlay"
+            id="mainPlay"
+            onclick="togglePlayer()">
+        ▶
     </button>
-
-    <button
-      class="mainControl"
-      id="mainPlay"
-      onclick="togglePlayer()">
-      ▶
-    </button>
-
-    <button class="control" onclick="nextStation()">
-      ⏭
-    </button>
-
-  </div>
 
 </div>
 
+<!-- BOTTOM NAV -->
 
-<!-- AUDIO -->
+<nav class="bottom">
 
-<audio id="audio" preload="none"></audio>
+    <div class="nav active">
+        <div>⌂</div>
+        Home
+    </div>
 
+    <div class="nav"
+         onclick="loadCategory('all')">
+        <div>♫</div>
+        Music
+    </div>
 
-<!-- NAV -->
+    <div class="nav"
+         onclick="showFavorites()">
+        <div>♥</div>
+        Favorite
+    </div>
 
-<nav class="bottomNav">
-
-  <button class="navItem active" onclick="goHome(this)">
-    <span class="navIcon">🏠</span>
-    Home
-  </button>
-
-  <button class="navItem" onclick="loadCategory('all',this)">
-    <span class="navIcon">🎵</span>
-    Music
-  </button>
-
-  <button class="navItem" onclick="showFavorites(this)">
-    <span class="navIcon">❤️</span>
-    Favorite
-  </button>
-
-  <button class="navItem" onclick="loadCategory('old',this)">
-    <span class="navIcon">📚</span>
-    Library
-  </button>
+    <div class="nav"
+         onclick="loadCategory('oldbengali')">
+        <div>▱</div>
+        Library
+    </div>
 
 </nav>
 
+<audio id="audio"
+       preload="none"
+       playsinline></audio>
 
 <script>
 
 /* =========================================
    MADHU MUSIC WORLD
-   LIVE RADIO ENGINE
+   RADIO BROWSER API
 ========================================= */
+
+const SERVERS = [
+    "https://de1.api.radio-browser.info",
+    "https://nl1.api.radio-browser.info",
+    "https://at1.api.radio-browser.info"
+];
+
+let stations = [];
+let currentStation = null;
+let favorites =
+    JSON.parse(localStorage.getItem("madhuFavorites") || "[]");
 
 const audio = document.getElementById("audio");
 
-const stationsBox = document.getElementById("stations");
-
-const playerName = document.getElementById("playerName");
-
-const playerStatus = document.getElementById("playerStatus");
-
-const playerIcon = document.getElementById("playerIcon");
-
-const mainPlay = document.getElementById("mainPlay");
-
-const sectionHeading = document.getElementById("sectionHeading");
-
-
-let stations = [];
-
-let currentStation = null;
-
-let currentIndex = -1;
-
 let currentCategory = "all";
-
-let favorites =
-  JSON.parse(localStorage.getItem("madhuFavorites") || "[]");
-
-
-/*
- Radio Browser has several public servers.
- If one server fails, the next one is tried.
-*/
-
-const API_SERVERS = [
-
-  "https://de1.api.radio-browser.info",
-  "https://nl1.api.radio-browser.info",
-  "https://at1.api.radio-browser.info",
-  "https://fr1.api.radio-browser.info"
-
-];
 
 
 /* =========================================
@@ -782,186 +710,261 @@ const API_SERVERS = [
 
 async function apiRequest(path){
 
-  for(const server of API_SERVERS){
+    for(const server of SERVERS){
 
-    try{
+        try{
 
-      const response =
-        await fetch(server + path,{
-          method:"GET",
-          headers:{
-            "Accept":"application/json"
-          }
-        });
+            const response = await fetch(
+                server + path,
+                {
+                    headers:{
+                        "Accept":"application/json"
+                    }
+                }
+            );
 
-      if(response.ok){
+            if(response.ok){
 
-        return await response.json();
+                const data = await response.json();
 
-      }
+                if(Array.isArray(data)){
+                    return data;
+                }
 
-    }catch(error){
+            }
 
-      console.log(
-        "Radio server failed:",
-        server
-      );
+        }catch(error){
+
+            console.log(
+                "Server failed:",
+                server
+            );
+
+        }
 
     }
 
-  }
-
-  throw new Error("All radio servers failed");
+    return [];
 
 }
 
 
 /* =========================================
-   LOAD STATIONS
+   BASE QUERY
 ========================================= */
 
-async function loadCategory(category="all",button=null){
+function makeQuery(extra=""){
 
-  currentCategory = category;
-
-  if(button){
-
-    document
-      .querySelectorAll(".category")
-      .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
-
-  }
-
-  stationsBox.innerHTML =
-    `<div class="loading">
-       ⏳ লাইভ স্টেশন খোঁজা হচ্ছে...
-     </div>`;
-
-  let query =
-    "/json/stations/search" +
-    "?limit=40" +
-    "&hidebroken=true" +
-    "&order=votes" +
-    "&reverse=true";
-
-  if(category === "bengali"){
-
-    query += "&language=Bengali";
-
-  }
-
-  else if(category === "old"){
-
-    query += "&tag=oldies";
-
-  }
-
-  else if(category === "hindi"){
-
-    query += "&language=Hindi&tag=oldies";
-
-  }
-
-  else if(category === "english"){
-
-    query += "&language=English&tag=oldies";
-
-  }
-
-  else if(category === "rabindra"){
-
-    query += "&name=Rabindra";
-
-  }
-
-  else if(category === "bhajan"){
-
-    query += "&tag=bhajan";
-
-  }
-
-  try{
-
-    let data = await apiRequest(query);
-
-    /*
-      Remove stations without usable stream URLs
-    */
-
-    data = data.filter(
-      s => s.url_resolved || s.url
-    );
-
-    stations = data;
-
-    sectionHeading.textContent =
-      categoryTitle(category);
-
-    renderStations();
-
-  }
-
-  catch(error){
-
-    stationsBox.innerHTML = `
-      <div class="errorBox">
-
-        ❌ এখন Radio Server থেকে Station পাওয়া যাচ্ছে না।
-
-        <br><br>
-
-        একটু পরে আবার চেষ্টা করুন।
-
-        <br><br>
-
-        <button
-          onclick="loadCategory('${category}')"
-          style="
-            background:#ff00ad;
-            color:#fff;
-            border:0;
-            border-radius:15px;
-            padding:12px 22px;
-            font-weight:bold;
-          ">
-          🔄 আবার চেষ্টা করুন
-        </button>
-
-      </div>
-    `;
-
-  }
+    return `/json/stations/search?${extra}` +
+           `&hidebroken=true` +
+           `&order=clickcount` +
+           `&reverse=true` +
+           `&limit=30`;
 
 }
 
 
 /* =========================================
-   TITLES
+   LOAD CATEGORY
 ========================================= */
 
-function categoryTitle(category){
+async function loadCategory(category,button=null){
 
-  const titles = {
+    currentCategory = category;
 
-    all:"Popular Stations",
+    if(button){
 
-    bengali:"Bengali Stations",
+        document
+        .querySelectorAll(".category")
+        .forEach(x=>x.classList.remove("active"));
 
-    old:"পুরোনো বাংলা গান • 70s • 80s • 90s",
+        button.classList.add("active");
 
-    hindi:"Hindi Retro Stations",
+    }
 
-    english:"English Retro Stations",
+    document.getElementById("stations").innerHTML =
+        `<div class="loading">
+            🎧 ${getCategoryName(category)}
+            স্টেশন খোঁজা হচ্ছে...
+         </div>`;
 
-    rabindra:"Rabindra Sangeet",
+    let data = [];
 
-    bhajan:"Bhajan Stations"
+    if(category === "all"){
 
-  };
+        data = await apiRequest(
+            makeQuery(
+                "country=India&is_https=true"
+            )
+        );
 
-  return titles[category] || "Radio Stations";
+        /* India না পেলে global */
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "language=bengali"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "bengali"){
+
+        data = await apiRequest(
+            makeQuery(
+                "language=bengali"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "tag=bangla"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "oldbengali"){
+
+        data = await apiRequest(
+            makeQuery(
+                "language=bengali&tag=oldies"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "language=bengali&tag=retro"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "hindi"){
+
+        data = await apiRequest(
+            makeQuery(
+                "language=hindi&tag=oldies"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "language=hindi"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "english"){
+
+        data = await apiRequest(
+            makeQuery(
+                "language=english&tag=oldies"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "language=english&tag=retro"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "rabindra"){
+
+        data = await apiRequest(
+            makeQuery(
+                "tag=rabindra"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "name=Rabindra"
+                )
+            );
+
+        }
+
+    }
+
+    else if(category === "bhajan"){
+
+        data = await apiRequest(
+            makeQuery(
+                "tag=bhajan"
+            )
+        );
+
+        if(data.length < 5){
+
+            data = await apiRequest(
+                makeQuery(
+                    "tag=devotional"
+                )
+            );
+
+        }
+
+    }
+
+    stations = cleanStations(data);
+
+    renderStations(stations);
+
+}
+
+
+/* =========================================
+   CLEAN STATIONS
+========================================= */
+
+function cleanStations(data){
+
+    const seen = new Set();
+
+    return data.filter(station=>{
+
+        const url =
+            station.url_resolved ||
+            station.url;
+
+        if(!url) return false;
+
+        if(!/^https?:\/\//i.test(url))
+            return false;
+
+        if(seen.has(station.stationuuid))
+            return false;
+
+        seen.add(station.stationuuid);
+
+        return true;
+
+    }).slice(0,30);
 
 }
 
@@ -970,118 +973,101 @@ function categoryTitle(category){
    RENDER
 ========================================= */
 
-function renderStations(list=stations){
+function renderStations(list){
 
-  if(!list.length){
+    const box =
+        document.getElementById("stations");
 
-    stationsBox.innerHTML = `
-      <div class="errorBox">
-        😔 এই বিভাগে এখন কোনো Station পাওয়া গেল না।
-      </div>
-    `;
+    if(!list.length){
 
-    return;
+        box.innerHTML = `
+            <div class="error">
+                😔 এই বিভাগে এখন কোনো স্টেশন পাওয়া যাচ্ছে না।
+                <br><br>
+                অন্য একটি বিভাগ চেষ্টা করুন।
+            </div>
+        `;
 
-  }
+        return;
+    }
 
+    box.innerHTML = "";
 
-  stationsBox.innerHTML = "";
+    list.forEach(station=>{
 
+        const div =
+            document.createElement("div");
 
-  list.forEach((station,index)=>{
+        div.className = "station";
 
-    const div =
-      document.createElement("div");
+        const isFav =
+            favorites.includes(
+                station.stationuuid
+            );
 
-    div.className = "station";
+        div.innerHTML = `
 
+            <div class="stationLogo">
 
-    const logo =
-      station.favicon ||
-      station.favicon_url ||
-      "";
+                ${
+                    station.favicon
+                    ?
+                    `<img
+                       src="${escapeHTML(station.favicon)}"
+                       style="
+                       width:100%;
+                       height:100%;
+                       object-fit:cover;
+                       border-radius:17px;"
+                       onerror="this.style.display='none'"
+                    >`
+                    :
+                    `🎧`
+                }
 
+            </div>
 
-    const isFav =
-      favorites.includes(station.stationuuid);
+            <div class="stationInfo">
 
+                <div class="stationName">
+                    ${escapeHTML(station.name || "Radio Station")}
+                </div>
 
-    div.innerHTML = `
+                <div class="stationMeta">
+                    ${escapeHTML(
+                        station.language ||
+                        station.tags ||
+                        "Radio"
+                    )}
+                    ${station.country ? " • " + escapeHTML(station.country) : ""}
+                </div>
 
-      <div class="stationLogo">
+            </div>
 
-        ${
-          logo
-          ?
-          `<img
-             src="${escapeHTML(logo)}"
-             onerror="this.style.display='none'"
-           >`
-          :
-          "🎵"
-        }
+            <div class="actions">
 
-      </div>
+                <div
+                    class="favorite"
+                    onclick="toggleFavorite('${station.stationuuid}')">
 
+                    ${isFav ? "♥" : "♡"}
 
-      <div class="stationInfo">
+                </div>
 
-        <div class="stationName">
-          ${escapeHTML(
-            station.name || "Unknown Radio"
-          )}
-        </div>
+                <button
+                    class="playBtn"
+                    onclick='playStation(${JSON.stringify(station)})'>
 
-        <div class="stationMeta">
+                    ▶
 
-          ${escapeHTML(
-            station.language ||
-            station.tags ||
-            "Online Radio"
-          )}
+                </button>
 
-          ${
-            station.country
-            ?
-            " • " +
-            escapeHTML(station.country)
-            :
-            ""
-          }
+            </div>
+        `;
 
-        </div>
+        box.appendChild(div);
 
-      </div>
-
-
-      <div class="stationButtons">
-
-        <button
-          class="favBtn"
-          onclick="toggleFavorite('${station.stationuuid}')">
-
-          ${isFav ? "♥" : "♡"}
-
-        </button>
-
-
-        <button
-          class="playBtn"
-          id="play-${index}"
-          onclick="playStation(${index})">
-
-          ▶
-
-        </button>
-
-      </div>
-
-    `;
-
-
-    stationsBox.appendChild(div);
-
-  });
+    });
 
 }
 
@@ -1090,284 +1076,139 @@ function renderStations(list=stations){
    PLAY STATION
 ========================================= */
 
-async function playStation(index){
+async function playStation(station){
 
-  if(!stations[index]) return;
+    const url =
+        station.url_resolved ||
+        station.url;
 
+    if(!url){
 
-  const station =
-    stations[index];
+        alert("এই স্টেশনের stream পাওয়া যাচ্ছে না।");
 
-
-  const stream =
-    station.url_resolved ||
-    station.url;
-
-
-  if(!stream){
-
-    alert("এই স্টেশনের stream পাওয়া যায়নি।");
-
-    return;
-
-  }
-
-
-  currentStation = station;
-
-  currentIndex = index;
-
-
-  /*
-    Radio Browser click endpoint.
-    This also helps maintain station popularity.
-  */
-
-  if(station.stationuuid){
+        return;
+    }
 
     try{
 
-      fetch(
-        "https://de1.api.radio-browser.info/json/url/" +
-        station.stationuuid
-      ).catch(()=>{});
+        if(currentStation &&
+           currentStation.stationuuid === station.stationuuid &&
+           !audio.paused){
 
-    }catch(e){}
+            audio.pause();
 
-  }
+            document.getElementById("mainPlay")
+                .textContent = "▶";
 
+            return;
+        }
 
-  playerName.textContent =
-    station.name || "Radio Station";
+        currentStation = station;
 
+        audio.src = url;
 
-  playerStatus.textContent =
-    "🔴 Live Radio";
+        audio.load();
 
+        await audio.play();
 
-  if(station.favicon){
+        document.getElementById("playerName")
+            .textContent =
+            station.name || "Radio Station";
 
-    playerIcon.innerHTML =
-      `<img
-        src="${escapeHTML(station.favicon)}"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          border-radius:18px;
-        "
-      >`;
+        document.getElementById("playerStatus")
+            .textContent =
+            "● Live Radio চলছে";
 
-  }else{
+        document.getElementById("mainPlay")
+            .textContent = "Ⅱ";
 
-    playerIcon.textContent = "🎧";
+    }catch(error){
 
-  }
+        console.log(error);
 
+        document.getElementById("playerName")
+            .textContent =
+            station.name || "Radio Station";
 
-  /*
-    Stop old station
-  */
+        document.getElementById("playerStatus")
+            .textContent =
+            "এই স্টেশনটি এখন চালু করা যাচ্ছে না";
 
-  audio.pause();
+        document.getElementById("mainPlay")
+            .textContent = "▶";
 
-  audio.src = stream;
-
-  audio.load();
-
-
-  try{
-
-    await audio.play();
-
-    mainPlay.textContent = "⏸";
-
-    updatePlayingButtons();
-
-  }
-
-  catch(error){
-
-    console.log(error);
-
-    playerStatus.textContent =
-      "⚠️ এই stream এখন চলছে না";
-
-    mainPlay.textContent = "▶";
-
-    /*
-      Some radio servers need a second click
-    */
-
-    alert(
-      "এই Station-টি এই মুহূর্তে offline হতে পারে। অন্য Station চেষ্টা করুন।"
-    );
-
-  }
+    }
 
 }
 
 
 /* =========================================
-   PLAYER TOGGLE
+   PLAYER
 ========================================= */
 
 function togglePlayer(){
 
-  if(!currentStation){
+    if(!currentStation){
 
-    if(stations.length){
+        alert(
+            "আগে একটি Radio Station নির্বাচন করুন।"
+        );
 
-      playStation(0);
+        return;
+    }
+
+    if(audio.paused){
+
+        audio.play()
+        .then(()=>{
+
+            document.getElementById("mainPlay")
+                .textContent = "Ⅱ";
+
+        })
+        .catch(()=>{
+
+            document.getElementById("playerStatus")
+                .textContent =
+                "স্টেশনটি চালু করা যাচ্ছে না";
+
+        });
+
+    }else{
+
+        audio.pause();
+
+        document.getElementById("mainPlay")
+            .textContent = "▶";
 
     }
 
-    return;
-
-  }
-
-
-  if(audio.paused){
-
-    audio.play()
-      .then(()=>{
-
-        mainPlay.textContent = "⏸";
-
-      })
-      .catch(()=>{
-
-        mainPlay.textContent = "▶";
-
-      });
-
-  }
-
-  else{
-
-    audio.pause();
-
-    mainPlay.textContent = "▶";
-
-    playerStatus.textContent =
-      "⏸ Paused";
-
-  }
-
 }
 
 
 /* =========================================
-   NEXT
+   FAVORITE
 ========================================= */
 
-function nextStation(){
+function toggleFavorite(id){
 
-  if(!stations.length) return;
+    if(favorites.includes(id)){
 
-  let next =
-    currentIndex + 1;
+        favorites =
+            favorites.filter(x=>x!==id);
 
-  if(next >= stations.length){
+    }else{
 
-    next = 0;
-
-  }
-
-  playStation(next);
-
-}
-
-
-/* =========================================
-   PREVIOUS
-========================================= */
-
-function previousStation(){
-
-  if(!stations.length) return;
-
-  let previous =
-    currentIndex - 1;
-
-  if(previous < 0){
-
-    previous =
-      stations.length - 1;
-
-  }
-
-  playStation(previous);
-
-}
-
-
-/* =========================================
-   PLAYING BUTTON
-========================================= */
-
-function updatePlayingButtons(){
-
-  document
-    .querySelectorAll(".playBtn")
-    .forEach(btn=>{
-
-      btn.classList.remove("playing");
-
-      btn.textContent = "▶";
-
-    });
-
-
-  if(currentIndex >= 0){
-
-    const btn =
-      document.getElementById(
-        "play-" + currentIndex
-      );
-
-    if(btn){
-
-      btn.classList.add("playing");
-
-      btn.textContent = "⏸";
+        favorites.push(id);
 
     }
 
-  }
+    localStorage.setItem(
+        "madhuFavorites",
+        JSON.stringify(favorites)
+    );
 
-}
-
-
-/* =========================================
-   FAVORITES
-========================================= */
-
-function toggleFavorite(uuid){
-
-  if(favorites.includes(uuid)){
-
-    favorites =
-      favorites.filter(
-        id => id !== uuid
-      );
-
-  }
-
-  else{
-
-    favorites.push(uuid);
-
-  }
-
-
-  localStorage.setItem(
-    "madhuFavorites",
-    JSON.stringify(favorites)
-  );
-
-
-  renderStations();
+    renderStations(stations);
 
 }
 
@@ -1376,32 +1217,40 @@ function toggleFavorite(uuid){
    SHOW FAVORITES
 ========================================= */
 
-function showFavorites(button=null){
+async function showFavorites(){
 
-  if(button){
+    if(!favorites.length){
 
-    document
-      .querySelectorAll(".navItem")
-      .forEach(b =>
-        b.classList.remove("active")
-      );
+        document.getElementById("stations").innerHTML = `
+            <div class="error">
+                💜 এখনও কোনো Favorite Station নেই।
+            </div>
+        `;
 
-    button.classList.add("active");
+        return;
+    }
 
-  }
+    document.getElementById("stations").innerHTML =
+        `<div class="loading">
+            💜 Favorite Station খোঁজা হচ্ছে...
+        </div>`;
 
+    let all = [];
 
-  const favStations =
-    stations.filter(
-      s => favorites.includes(s.stationuuid)
-    );
+    for(const id of favorites){
 
+        const data =
+            await apiRequest(
+                `/json/stations/byuuid/${id}`
+            );
 
-  sectionHeading.textContent =
-    "My Favorite";
+        all.push(...data);
 
+    }
 
-  renderStations(favStations);
+    stations = cleanStations(all);
+
+    renderStations(stations);
 
 }
 
@@ -1412,90 +1261,113 @@ function showFavorites(button=null){
 
 function toggleSearch(){
 
-  const panel =
-    document.getElementById(
-      "searchPanel"
-    );
+    const box =
+        document.getElementById("searchBox");
 
-  panel.classList.toggle("show");
+    box.style.display =
+        box.style.display === "block"
+        ? "none"
+        : "block";
 
-  if(panel.classList.contains("show")){
+    if(box.style.display === "block"){
 
-    document
-      .getElementById("searchInput")
-      .focus();
+        document
+        .getElementById("searchInput")
+        .focus();
 
-  }
+    }
 
 }
 
 
+let searchTimer;
+
 function searchStations(){
 
-  const value =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
+    clearTimeout(searchTimer);
 
+    const value =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim();
 
-  if(!value){
+    if(!value){
 
-    renderStations();
+        loadCategory(currentCategory);
 
-    return;
+        return;
 
-  }
+    }
 
+    searchTimer =
+        setTimeout(async()=>{
 
-  const result =
-    stations.filter(station =>
+            document.getElementById("stations")
+            .innerHTML =
+                `<div class="loading">
+                    🔎 খোঁজা হচ্ছে...
+                 </div>`;
 
-      (
-        station.name +
-        " " +
-        station.tags +
-        " " +
-        station.language +
-        " " +
-        station.country
-      )
-      .toLowerCase()
-      .includes(value)
+            const data =
+                await apiRequest(
+                    makeQuery(
+                        "name=" +
+                        encodeURIComponent(value)
+                    )
+                );
 
-    );
+            stations =
+                cleanStations(data);
 
+            renderStations(stations);
 
-  renderStations(result);
+        },400);
 
 }
 
 
 /* =========================================
-   HOME
+   CATEGORY NAME
 ========================================= */
 
-function goHome(button){
+function getCategoryName(category){
 
-  document
-    .querySelectorAll(".navItem")
-    .forEach(b =>
-      b.classList.remove("active")
-    );
+    const names = {
 
-  if(button){
+        all:"সব",
 
-    button.classList.add("active");
+        bengali:"বাংলা",
 
-  }
+        oldbengali:"পুরোনো বাংলা",
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+        hindi:"হিন্দি",
 
-  loadCategory("all");
+        english:"English Retro",
+
+        rabindra:"রবীন্দ্রসঙ্গীত",
+
+        bhajan:"ভজন"
+
+    };
+
+    return names[category] || "";
+
+}
+
+
+/* =========================================
+   HTML ESCAPE
+========================================= */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
@@ -1505,70 +1377,24 @@ function goHome(button){
 ========================================= */
 
 audio.addEventListener(
-  "playing",
-  ()=>{
-
-    mainPlay.textContent = "⏸";
-
-    playerStatus.textContent =
-      "🔴 Live Radio";
-
-    updatePlayingButtons();
-
-  }
-);
-
-
-audio.addEventListener(
-  "pause",
-  ()=>{
-
-    mainPlay.textContent = "▶";
-
-    updatePlayingButtons();
-
-  }
-);
-
-
-audio.addEventListener(
-  "error",
-  ()=>{
-
-    if(currentStation){
-
-      playerStatus.textContent =
-        "⚠️ Stream unavailable";
-
-      mainPlay.textContent =
-        "▶";
-
+    "pause",
+    ()=>{
+        document.getElementById("mainPlay")
+            .textContent = "▶";
     }
+);
 
-  }
+audio.addEventListener(
+    "play",
+    ()=>{
+        document.getElementById("mainPlay")
+            .textContent = "Ⅱ";
+    }
 );
 
 
 /* =========================================
-   SECURITY
-========================================= */
-
-function escapeHTML(value){
-
-  if(!value) return "";
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================
-   START APP
+   START
 ========================================= */
 
 loadCategory("all");
