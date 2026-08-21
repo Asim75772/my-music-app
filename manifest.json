@@ -1,0 +1,11 @@
+{
+  "name": "Madhu Music World",
+  "short_name": "Madhu Music",
+  "description": "Madhu Music World - Music App",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#09070D",
+  "theme_color": "#6200EE"
+}
