@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wave Music</title>
+<title>Wave Music V2</title>
 
 <style>
 
@@ -17,7 +17,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0b0b0f;
+background:#09090d;
 color:white;
 }
 
@@ -34,51 +34,42 @@ align-items:center;
 }
 
 .header h1{
-font-size:28px;
+font-size:30px;
 }
-
-.search{
-font-size:22px;
-}
-
 
 .card{
-margin-top:25px;
-background:#17171d;
+background:#171720;
+border-radius:30px;
 padding:20px;
-border-radius:25px;
+margin-top:25px;
 text-align:center;
 }
 
 .cover{
 height:300px;
-border-radius:20px;
-background:linear-gradient(135deg,#333,#111);
+border-radius:25px;
+background:linear-gradient(135deg,#444,#111);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:90px;
+font-size:100px;
 }
 
-
-.song-name{
-font-size:25px;
+.title{
+font-size:26px;
 font-weight:bold;
 margin-top:20px;
 }
-
 
 .artist{
 color:#999;
 margin-top:8px;
 }
 
-
 input{
 width:100%;
-margin-top:25px;
+margin-top:20px;
 }
-
 
 .controls{
 display:flex;
@@ -88,44 +79,39 @@ gap:25px;
 margin-top:25px;
 }
 
-
-.controls button{
+button{
+border:0;
 background:none;
-border:none;
 color:white;
 font-size:30px;
 }
 
-
 .play{
-background:white!important;
-color:black!important;
-width:70px;
+background:white;
+color:black;
 height:70px;
+width:70px;
 border-radius:50%;
 }
-
 
 .list{
 margin-top:30px;
 }
 
-
-.item{
+.song{
 display:flex;
 align-items:center;
-background:#17171d;
+background:#171720;
 padding:15px;
-border-radius:15px;
-margin-top:12px;
+border-radius:20px;
+margin-top:15px;
 }
 
-
-.icon{
-width:55px;
+.pic{
 height:55px;
-background:#292932;
-border-radius:12px;
+width:55px;
+background:#292933;
+border-radius:15px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -133,247 +119,95 @@ font-size:25px;
 margin-right:15px;
 }
 
-
 .info{
 flex:1;
 }
 
-
 .info p{
 color:#888;
-font-size:13px;
 }
 
-
-.item button{
-background:#292932;
-color:white;
-border:none;
-width:40px;
-height:40px;
-border-radius:50%;
+.like{
+font-size:22px;
 }
 
+.nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#15151b;
+display:flex;
+justify-content:space-around;
+padding:15px;
+font-size:15px;
+}
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="app">
 
-
 <div class="header">
-
 <h1>Wave Music 🎵</h1>
-
-<div class="search">🔍</div>
-
+<span>🔍</span>
 </div>
 
 
-
 <div class="card">
-
 
 <div class="cover">
 🎧
 </div>
 
-
-<div class="song-name" id="title">
-Online Music
+<div class="title" id="title">
+Select Song
 </div>
-
 
 <div class="artist" id="artist">
-Artist Name
+Artist
 </div>
 
 
-<input type="range" id="bar" value="0">
+<input type="range" id="progress">
 
 
 <div class="controls">
 
+<button onclick="previous()">⏮</button>
 
-<button onclick="prev()">⏮</button>
-
-
-<button class="play" onclick="playMusic()" id="play">
+<button class="play" onclick="playPause()" id="play">
 ▶
 </button>
 
-
 <button onclick="next()">⏭</button>
 
-
 </div>
 
-
 </div>
-
 
 
 <div class="list">
 
 <h2>Songs</h2>
 
-
-<div class="item">
-
-<div class="icon">🎵</div>
-
-<div class="info">
-<h3>Song One</h3>
-<p>Artist One</p>
-</div>
-
-<button onclick="load(0)">▶</button>
-
-</div>
-
-
-
-<div class="item">
-
-<div class="icon">🎶</div>
-
-<div class="info">
-<h3>Song Two</h3>
-<p>Artist Two</p>
-</div>
-
-<button onclick="load(1)">▶</button>
-
-</div>
-
-
+<div id="songs"></div>
 
 </div>
 
 
 </div>
 
+
+<div class="nav">
+<div>🏠<br>Home</div>
+<div>🎵<br>Music</div>
+<div>❤️<br>Favorite</div>
+<div>📂<br>Library</div>
+</div>
 
 
 <audio id="audio"></audio>
-
-
-
-<script>
-
-
-let songs=[
-
-{
-name:"Song One",
-artist:"Artist One",
-url:"https://ice5.somafm.com/live-128-mp3"
-},
-
-
-{
-name:"Song Two",
-artist:"Artist Two",
-url:"https://ice5.somafm.com/thetrip-128-mp3"
-}
-
-];
-
-
-let index=0;
-
-
-let audio=document.getElementById("audio");
-
-let play=document.getElementById("play");
-
-
-function load(i){
-
-index=i;
-
-audio.src=songs[i].url;
-
-document.getElementById("title").innerHTML=songs[i].name;
-
-document.getElementById("artist").innerHTML=songs[i].artist;
-
-audio.play();
-
-play.innerHTML="⏸";
-
-}
-
-
-
-function playMusic(){
-
-if(audio.paused){
-
-load(index);
-
-}
-
-else{
-
-audio.pause();
-
-play.innerHTML="▶";
-
-}
-
-}
-
-
-
-function next(){
-
-index++;
-
-if(index>=songs.length){
-
-index=0;
-
-}
-
-load(index);
-
-}
-
-
-
-function prev(){
-
-index--;
-
-if(index<0){
-
-index=songs.length-1;
-
-}
-
-load(index);
-
-}
-
-
-
-audio.addEventListener("timeupdate",()=>{
-
-document.getElementById("bar").value=
-
-(audio.currentTime/audio.duration)*100;
-
-});
-
-
-</script>
-
-
-</body>
-</html>
