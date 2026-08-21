@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wave Music</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Madhu Music World</title>
+
 
 <style>
 
@@ -39,7 +43,7 @@ align-items:center;
 }
 
 .header h1{
-font-size:30px;
+font-size:28px;
 }
 
 .search-btn{
@@ -70,22 +74,46 @@ font-size:16px;
 outline:none;
 }
 
+.categories{
+display:flex;
+gap:10px;
+margin-top:20px;
+overflow-x:auto;
+padding-bottom:5px;
+}
+
+.categories button{
+background:#171720;
+color:white;
+border:0;
+border-radius:20px;
+padding:10px 15px;
+font-size:14px;
+white-space:nowrap;
+cursor:pointer;
+}
+
+.categories button.active{
+background:white;
+color:black;
+}
+
 .card{
 background:#171720;
 border-radius:30px;
 padding:20px;
-margin-top:25px;
+margin-top:20px;
 text-align:center;
 }
 
 .cover{
-height:300px;
+height:280px;
 border-radius:25px;
 background:linear-gradient(135deg,#444,#111);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:100px;
+font-size:95px;
 }
 
 .title{
@@ -103,6 +131,7 @@ input[type="range"]{
 width:100%;
 margin-top:20px;
 accent-color:#4da3ff;
+cursor:pointer;
 }
 
 .controls{
@@ -113,7 +142,7 @@ gap:25px;
 margin-top:25px;
 }
 
-button{
+.controls button{
 border:0;
 background:none;
 color:white;
@@ -122,12 +151,12 @@ cursor:pointer;
 }
 
 .play{
-background:white;
-color:black;
+background:white !important;
+color:black !important;
 height:70px;
 width:70px;
 border-radius:50%;
-font-size:28px;
+font-size:28px !important;
 }
 
 .list{
@@ -186,8 +215,16 @@ margin-top:5px;
 }
 
 .like{
-font-size:23px;
+font-size:24px;
 padding:8px;
+background:none;
+border:0;
+color:white;
+cursor:pointer;
+}
+
+.like.active{
+color:red;
 }
 
 .nav{
@@ -218,41 +255,22 @@ font-size:24px;
 color:#4da3ff;
 }
 
-.message{
+.loading{
+text-align:center;
+color:#888;
+padding:30px 10px;
+}
+
+.empty{
 text-align:center;
 color:#777;
 padding:30px 10px;
 }
 
-.category{
-display:flex;
-gap:10px;
-margin-top:20px;
-overflow-x:auto;
-}
-
-.category button{
-background:#171720;
-border-radius:20px;
-padding:10px 15px;
-font-size:14px;
-white-space:nowrap;
-}
-
-.category button.active{
-background:white;
-color:black;
-}
-
-.loading{
-text-align:center;
-color:#888;
-padding:25px;
-}
-
 </style>
 
 </head>
+
 
 <body>
 
@@ -260,9 +278,11 @@ padding:25px;
 <div class="app">
 
 
+<!-- HEADER -->
+
 <div class="header">
 
-<h1>Wave Music 🎵</h1>
+<h1>Madhu Music World 🎵</h1>
 
 <button
 class="search-btn"
@@ -274,47 +294,67 @@ onclick="toggleSearch()"
 </div>
 
 
+<!-- SEARCH -->
+
 <div
 class="search-box"
 id="searchBox"
 >
 
 <input
-id="searchInput"
 type="text"
-placeholder="Search Hindi or Bengali music..."
-oninput="searchSongs()"
+id="searchInput"
+placeholder="Search music..."
+oninput="searchMusic()"
 >
 
 </div>
 
 
-<div class="category">
+<!-- CATEGORIES -->
+
+<div class="categories">
 
 <button
 id="bengaliBtn"
 class="active"
-onclick="loadLanguage('bengali')"
+onclick="loadCategory('bengali')"
 >
 🇮🇳 Bengali
 </button>
 
 <button
 id="hindiBtn"
-onclick="loadLanguage('hindi')"
+onclick="loadCategory('hindi')"
 >
 🇮🇳 Hindi
 </button>
 
 <button
+id="rabindraBtn"
+onclick="loadCategory('rabindra')"
+>
+🎼 Rabindra Sangeet
+</button>
+
+<button
+id="bhajanBtn"
+onclick="loadCategory('bhajan')"
+>
+🕉️ Bhajan
+</button>
+
+<button
 id="allBtn"
-onclick="loadLanguage('all')"
+onclick="loadCategory('all')"
 >
 🎵 All
 </button>
 
 </div>
 
+
+<!-- PLAYER -->
 
 <div class="card">
 
@@ -326,7 +366,7 @@ onclick="loadLanguage('all')"
 class="title"
 id="title"
 >
-Select Song
+Select Music
 </div>
 
 <div
@@ -367,25 +407,32 @@ onclick="playPause()"
 </div>
 
 
-<div class="list">
+<!-- SONG LIST -->
+
+<div
+class="list"
+id="musicList"
+>
 
 <h2 id="listTitle">
 Bengali Music
 </h2>
 
-<div
-id="songs"
->
+<div id="songs">
+
 <div class="loading">
-Loading online stations...
+Loading online music...
 </div>
+
 </div>
+
+</div>
+
 
 </div>
 
 
-</div>
-
+<!-- NAVIGATION -->
 
 <div class="nav">
 
@@ -435,28 +482,29 @@ Library
 
 
 /* =========================
-   APP VARIABLES
+   VARIABLES
 ========================= */
 
 let stations = [];
 
-let current = 0;
+let currentList = [];
+
+let currentIndex = 0;
+
+let currentCategory = "bengali";
 
 let favorites =
 JSON.parse(
-localStorage.getItem("waveFavorites") || "[]"
+localStorage.getItem(
+"madhuFavorites"
+) || "[]"
 );
-
-let currentLanguage = "bengali";
-
-let currentList = [];
-
 
 
 const audio =
 document.getElementById("audio");
 
-const play =
+const playButton =
 document.getElementById("play");
 
 const title =
@@ -468,19 +516,16 @@ document.getElementById("artist");
 const progress =
 document.getElementById("progress");
 
-const songs =
+const songsBox =
 document.getElementById("songs");
-
-const listTitle =
-document.getElementById("listTitle");
 
 
 
 /* =========================
-   API SERVERS
+   RADIO BROWSER SERVERS
 ========================= */
 
-const radioServers = [
+const servers = [
 
 "https://de1.api.radio-browser.info",
 
@@ -493,30 +538,36 @@ const radioServers = [
 
 
 /* =========================
-   LOAD RADIO STATIONS
+   LOAD ALL STATIONS
 ========================= */
 
 async function loadStations(){
 
-songs.innerHTML =
-'<div class="loading">Loading online music...</div>';
+songsBox.innerHTML =
+`
+<div class="loading">
+Loading online music...
+</div>
+`;
 
-let results = [];
+let all = [];
 
 try{
 
 for(
-const server of radioServers
+const server of servers
 ){
 
-let url =
+const url =
 server +
-"/json/stations/search?" +
-"countrycode=IN" +
-"&limit=50" +
+"/json/stations/search" +
+"?countrycode=IN" +
 "&hidebroken=true" +
 "&order=votes" +
-"&reverse=true";
+"&reverse=true" +
+"&limit=100";
+
+try{
 
 const response =
 await fetch(url);
@@ -528,29 +579,40 @@ continue;
 const data =
 await response.json();
 
-results =
-results.concat(data);
+all =
+all.concat(data);
 
-if(results.length >= 50){
+}catch(error){
+
+console.log(
+"Server error",
+server
+);
+
+}
+
+if(all.length >= 100){
 break;
 }
 
 }
 
-stations = removeDuplicates(results);
 
-filterStations();
+stations =
+removeDuplicates(all);
+
+loadCategory("bengali");
 
 }catch(error){
 
 console.log(error);
 
-songs.innerHTML =
+songsBox.innerHTML =
 `
-<div class="message">
-Online stations could not be loaded.
+<div class="empty">
+Internet connection problem.
 <br><br>
-Please check your internet connection.
+Please try again.
 </div>
 `;
 
@@ -568,11 +630,17 @@ function removeDuplicates(list){
 
 const seen = new Set();
 
-return list.filter(station=>{
+return list.filter(
+station=>{
 
 const id =
 station.stationuuid ||
-station.url_resolved;
+station.url_resolved ||
+station.url;
+
+if(!id){
+return false;
+}
 
 if(seen.has(id)){
 return false;
@@ -589,26 +657,27 @@ return true;
 
 
 /* =========================
-   FILTER LANGUAGE
+   CATEGORY
 ========================= */
 
-function filterStations(){
+function loadCategory(category){
 
-let list = stations;
+currentCategory =
+category;
 
-if(currentLanguage === "bengali"){
+setCategoryButton(category);
 
-list = stations.filter(station=>{
+let result = [];
 
-const text = (
 
-(station.name || "") +
-" " +
-(station.language || "") +
-" " +
-(station.tags || "")
+if(category === "bengali"){
 
-).toLowerCase();
+result =
+stations.filter(
+station=>{
+
+const text =
+getStationText(station);
 
 return (
 text.includes("bengali") ||
@@ -619,25 +688,22 @@ text.includes("west bengal")
 
 });
 
-listTitle.innerHTML =
+document.getElementById(
+"listTitle"
+).textContent =
 "Bengali Music";
 
 }
 
 
-else if(currentLanguage === "hindi"){
+else if(category === "hindi"){
 
-list = stations.filter(station=>{
+result =
+stations.filter(
+station=>{
 
-const text = (
-
-(station.name || "") +
-" " +
-(station.language || "") +
-" " +
-(station.tags || "")
-
-).toLowerCase();
+const text =
+getStationText(station);
 
 return (
 text.includes("hindi") ||
@@ -646,21 +712,80 @@ text.includes("bollywood")
 
 });
 
-listTitle.innerHTML =
+document.getElementById(
+"listTitle"
+).textContent =
 "Hindi Music";
+
+}
+
+
+else if(category === "rabindra"){
+
+result =
+stations.filter(
+station=>{
+
+const text =
+getStationText(station);
+
+return (
+text.includes("rabindra") ||
+text.includes("tagore") ||
+text.includes("geetanjali")
+);
+
+});
+
+document.getElementById(
+"listTitle"
+).textContent =
+"Rabindra Sangeet";
+
+}
+
+
+else if(category === "bhajan"){
+
+result =
+stations.filter(
+station=>{
+
+const text =
+getStationText(station);
+
+return (
+text.includes("bhajan") ||
+text.includes("devotional") ||
+text.includes("devotion") ||
+text.includes("spiritual")
+);
+
+});
+
+document.getElementById(
+"listTitle"
+).textContent =
+"Bhajan";
 
 }
 
 
 else{
 
-listTitle.innerHTML =
-"Online Music";
+result =
+stations;
+
+document.getElementById(
+"listTitle"
+).textContent =
+"All Music";
 
 }
 
 
-currentList = list.slice(0,30);
+currentList =
+result.slice(0,50);
 
 renderStations();
 
@@ -669,21 +794,46 @@ renderStations();
 
 
 /* =========================
-   RENDER STATIONS
+   STATION TEXT
+========================= */
+
+function getStationText(station){
+
+return (
+
+(station.name || "") +
+" " +
+(station.language || "") +
+" " +
+(station.tags || "") +
+" " +
+(station.country || "") +
+" " +
+(station.state || "")
+
+).toLowerCase();
+
+}
+
+
+
+/* =========================
+   RENDER
 ========================= */
 
 function renderStations(){
 
-songs.innerHTML = "";
+songsBox.innerHTML = "";
 
 if(currentList.length === 0){
 
-songs.innerHTML =
+songsBox.innerHTML =
 `
-<div class="message">
-No station found.
+<div class="empty">
+এই category-তে এখন কোনো
+online station পাওয়া যায়নি।
 <br><br>
-Try another category.
+অন্য category চেষ্টা করুন।
 </div>
 `;
 
@@ -701,32 +851,44 @@ document.createElement("div");
 div.className = "song";
 
 
-let image = "";
+let image = "🎵";
+
 
 if(station.favicon){
 
 image =
 `
 <img
-src="${station.favicon}"
-onerror="this.style.display='none'"
+src="${escapeHTML(
+station.favicon
+)}"
+onerror="
+this.style.display='none';
+"
 >
 `;
 
 }
 
 
+const favorite =
+favorites.includes(
+station.stationuuid
+);
+
+
 div.innerHTML = `
 
 <div class="pic">
-${image || "🎵"}
+${image}
 </div>
 
 <div class="info">
 
 <h3>
 ${escapeHTML(
-station.name || "Online Radio"
+station.name ||
+"Online Music"
 )}
 </h3>
 
@@ -734,24 +896,20 @@ station.name || "Online Radio"
 ${escapeHTML(
 station.language ||
 station.country ||
-"Online Music"
+"Online Station"
 )}
 </p>
 
 </div>
 
-<div
-class="like"
-onclick="toggleFavorite(event,${index})"
+<button
+class="like ${favorite ? "active" : ""}"
+onclick="
+toggleFavorite(event,${index})
+"
 >
-${
-favorites.includes(
-station.stationuuid
-)
-? "❤️"
-: "♡"
-}
-</div>
+${favorite ? "❤️" : "♡"}
+</button>
 
 `;
 
@@ -765,7 +923,7 @@ playStation(index);
 });
 
 
-songs.appendChild(div);
+songsBox.appendChild(div);
 
 });
 
@@ -779,14 +937,16 @@ songs.appendChild(div);
 
 function playStation(index){
 
-if(!currentList[index]){
+const station =
+currentList[index];
+
+if(!station){
 return;
 }
 
-current = index;
+currentIndex =
+index;
 
-const station =
-currentList[index];
 
 const stream =
 station.url_resolved ||
@@ -796,7 +956,7 @@ station.url;
 if(!stream){
 
 alert(
-"This station has no playable stream."
+"এই station-এর playable stream পাওয়া যায়নি।"
 );
 
 return;
@@ -804,39 +964,49 @@ return;
 }
 
 
-audio.src = stream;
+audio.src =
+stream;
+
 
 title.textContent =
-station.name || "Online Radio";
+station.name ||
+"Online Music";
+
 
 artist.textContent =
 station.language ||
 station.country ||
-"Online Music";
+"Online Radio";
 
 
 audio.play()
-.then(()=>{
+.then(
+function(){
 
-play.textContent = "⏸";
+playButton.textContent =
+"⏸";
 
-})
-.catch(()=>{
+}
+)
+.catch(
+function(){
 
-play.textContent = "▶";
+playButton.textContent =
+"▶";
 
 alert(
-"এই station টি এখন চালানো যাচ্ছে না। অন্য station চেষ্টা করুন।"
+"এই station এখন চালানো যাচ্ছে না। অন্য station চেষ্টা করুন।"
 );
 
-});
+}
+);
 
 }
 
 
 
 /* =========================
-   PLAY / PAUSE
+   PLAY PAUSE
 ========================= */
 
 function playPause(){
@@ -845,7 +1015,9 @@ if(!audio.src){
 
 if(currentList.length > 0){
 
-playStation(current);
+playStation(
+currentIndex
+);
 
 }
 
@@ -857,17 +1029,21 @@ return;
 if(audio.paused){
 
 audio.play()
-.then(()=>{
+.then(
+function(){
 
-play.textContent = "⏸";
+playButton.textContent =
+"⏸";
 
-});
+}
+);
 
 }else{
 
 audio.pause();
 
-play.textContent = "▶";
+playButton.textContent =
+"▶";
 
 }
 
@@ -885,15 +1061,20 @@ if(currentList.length === 0){
 return;
 }
 
-current++;
+currentIndex++;
 
-if(current >= currentList.length){
+if(
+currentIndex >=
+currentList.length
+){
 
-current = 0;
+currentIndex = 0;
 
 }
 
-playStation(current);
+playStation(
+currentIndex
+);
 
 }
 
@@ -909,59 +1090,20 @@ if(currentList.length === 0){
 return;
 }
 
-current--;
+currentIndex--;
 
-if(current < 0){
+if(currentIndex < 0){
 
-current =
+currentIndex =
 currentList.length - 1;
 
 }
 
-playStation(current);
+playStation(
+currentIndex
+);
 
 }
-
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-audio.addEventListener(
-"timeupdate",
-()=>{
-
-if(
-audio.duration &&
-isFinite(audio.duration)
-){
-
-progress.value =
-(audio.currentTime /
-audio.duration) * 100;
-
-}
-
-});
-
-
-progress.addEventListener(
-"input",
-()=>{
-
-if(
-audio.duration &&
-isFinite(audio.duration)
-){
-
-audio.currentTime =
-(progress.value / 100)
-* audio.duration;
-
-}
-
-});
 
 
 
@@ -971,29 +1113,158 @@ audio.currentTime =
 
 audio.addEventListener(
 "play",
-()=>{
+function(){
 
-play.textContent = "⏸";
+playButton.textContent =
+"⏸";
 
 });
 
 
 audio.addEventListener(
 "pause",
-()=>{
+function(){
 
-play.textContent = "▶";
+playButton.textContent =
+"▶";
 
 });
 
 
 audio.addEventListener(
 "ended",
-()=>{
+function(){
 
 next();
 
 });
+
+
+audio.addEventListener(
+"timeupdate",
+function(){
+
+if(
+audio.duration &&
+isFinite(audio.duration)
+){
+
+progress.value =
+(
+audio.currentTime /
+audio.duration
+) * 100;
+
+}
+
+});
+
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+progress.addEventListener(
+"input",
+function(){
+
+if(
+audio.duration &&
+isFinite(audio.duration)
+){
+
+audio.currentTime =
+(
+progress.value / 100
+) *
+audio.duration;
+
+}
+
+});
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function toggleSearch(){
+
+const box =
+document.getElementById(
+"searchBox"
+);
+
+box.classList.toggle(
+"active"
+);
+
+if(
+box.classList.contains(
+"active"
+)
+){
+
+document
+.getElementById(
+"searchInput"
+)
+.focus();
+
+}
+
+}
+
+
+function searchMusic(){
+
+const query =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.toLowerCase()
+.trim();
+
+
+if(query === ""){
+
+loadCategory(
+currentCategory
+);
+
+return;
+
+}
+
+
+const result =
+stations.filter(
+station=>{
+
+return getStationText(
+station
+).includes(query);
+
+});
+
+
+currentList =
+result.slice(0,50);
+
+
+document.getElementById(
+"listTitle"
+).textContent =
+"Search Results";
+
+
+renderStations();
+
+}
 
 
 
@@ -1015,8 +1286,10 @@ if(!station){
 return;
 }
 
+
 const id =
 station.stationuuid;
+
 
 if(favorites.includes(id)){
 
@@ -1031,10 +1304,14 @@ favorites.push(id);
 
 }
 
+
 localStorage.setItem(
-"waveFavorites",
-JSON.stringify(favorites)
+"madhuFavorites",
+JSON.stringify(
+favorites
+)
 );
+
 
 renderStations();
 
@@ -1043,17 +1320,22 @@ renderStations();
 
 
 /* =========================
-   FAVORITE PAGE
+   FAVORITES
 ========================= */
 
 function showFavorites(){
 
-setActive("favoriteNav");
+setActive(
+"favoriteNav"
+);
 
-listTitle.innerHTML =
+document.getElementById(
+"listTitle"
+).textContent =
 "Favorite Music";
 
-const favoriteList =
+
+currentList =
 stations.filter(
 station =>
 favorites.includes(
@@ -1061,155 +1343,37 @@ station.stationuuid
 )
 );
 
-currentList =
-favoriteList;
 
 renderStations();
 
-scrollToMusic();
+scrollToList();
 
 }
 
 
 
 /* =========================
-   SEARCH
+   LIBRARY
 ========================= */
 
-function toggleSearch(){
+function showLibrary(){
 
-const box =
+setActive(
+"libraryNav"
+);
+
 document.getElementById(
-"searchBox"
-);
-
-box.classList.toggle(
-"active"
-);
-
-if(box.classList.contains(
-"active"
-)){
-
-document
-.getElementById(
-"searchInput"
-)
-.focus();
-
-}
-
-}
-
-
-
-function searchSongs(){
-
-const text =
-document
-.getElementById(
-"searchInput"
-)
-.value
-.toLowerCase()
-.trim();
-
-
-if(text === ""){
-
-filterStations();
-
-return;
-
-}
-
-
-const result =
-stations.filter(
-station=>{
-
-const data = (
-
-station.name || "" +
-" " +
-station.language || "" +
-" " +
-station.tags || "" +
-" " +
-station.country || ""
-
-).toLowerCase();
-
-return data.includes(text);
-
-});
+"listTitle"
+).textContent =
+"My Library";
 
 
 currentList =
-result.slice(0,30);
-
-listTitle.innerHTML =
-"Search Results";
+stations.slice(0,50);
 
 renderStations();
 
-}
-
-
-
-/* =========================
-   LANGUAGE BUTTONS
-========================= */
-
-function loadLanguage(language){
-
-currentLanguage =
-language;
-
-document
-.querySelectorAll(
-".category button"
-)
-.forEach(
-button =>
-button.classList.remove(
-"active"
-)
-);
-
-
-if(language === "bengali"){
-
-document
-.getElementById(
-"bengaliBtn"
-)
-.classList.add("active");
-
-}
-
-else if(language === "hindi"){
-
-document
-.getElementById(
-"hindiBtn"
-)
-.classList.add("active");
-
-}
-
-else{
-
-document
-.getElementById(
-"allBtn"
-)
-.classList.add("active");
-
-}
-
-
-filterStations();
+scrollToList();
 
 }
 
@@ -1221,34 +1385,20 @@ filterStations();
 
 function goHome(){
 
-setActive("homeNav");
+setActive(
+"homeNav"
+);
 
-currentLanguage =
-"bengali";
-
-document
-.getElementById(
-"bengaliBtn"
-)
-.classList.add("active");
-
-document
-.getElementById(
-"hindiBtn"
-)
-.classList.remove("active");
-
-document
-.getElementById(
-"allBtn"
-)
-.classList.remove("active");
-
-filterStations();
+loadCategory(
+"bengali"
+);
 
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
@@ -1261,37 +1411,85 @@ behavior:"smooth"
 
 function goMusic(){
 
-setActive("musicNav");
+setActive(
+"musicNav"
+);
 
-document
-.getElementById(
-"musicList"
-)
-?.scrollIntoView({
-behavior:"smooth"
-});
+scrollToList();
 
 }
 
 
 
 /* =========================
-   LIBRARY
+   CATEGORY BUTTON
 ========================= */
 
-function showLibrary(){
+function setCategoryButton(
+category
+){
 
-setActive("libraryNav");
+document
+.querySelectorAll(
+".categories button"
+)
+.forEach(
+button =>
+button.classList.remove(
+"active"
+)
+);
 
-listTitle.innerHTML =
-"My Library";
 
-currentList =
-stations.slice(0,30);
+if(category === "bengali"){
 
-renderStations();
+document.getElementById(
+"bengaliBtn"
+).classList.add(
+"active"
+);
 
-scrollToMusic();
+}
+
+else if(category === "hindi"){
+
+document.getElementById(
+"hindiBtn"
+).classList.add(
+"active"
+);
+
+}
+
+else if(category === "rabindra"){
+
+document.getElementById(
+"rabindraBtn"
+).classList.add(
+"active"
+);
+
+}
+
+else if(category === "bhajan"){
+
+document.getElementById(
+"bhajanBtn"
+).classList.add(
+"active"
+);
+
+}
+
+else{
+
+document.getElementById(
+"allBtn"
+).classList.add(
+"active"
+);
+
+}
 
 }
 
@@ -1314,6 +1512,7 @@ item.classList.remove(
 )
 );
 
+
 document
 .getElementById(id)
 .classList.add(
@@ -1328,12 +1527,16 @@ document
    SCROLL
 ========================= */
 
-function scrollToMusic(){
+function scrollToList(){
 
 document
-.querySelector(".list")
+.getElementById(
+"musicList"
+)
 .scrollIntoView({
+
 behavior:"smooth"
+
 });
 
 }
@@ -1341,17 +1544,37 @@ behavior:"smooth"
 
 
 /* =========================
-   SAFE TEXT
+   ESCAPE HTML
 ========================= */
 
 function escapeHTML(text){
 
 return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
@@ -1363,7 +1586,10 @@ return String(text)
 
 loadStations();
 
+
 </script>
 
+
 </body>
+
 </html>
