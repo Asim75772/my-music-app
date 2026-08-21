@@ -25,7 +25,6 @@ color:white;
 max-width:500px;
 margin:auto;
 padding:20px;
-padding-bottom:80px;
 }
 
 .header{
@@ -157,6 +156,7 @@ font-size:15px;
 <span>🔍</span>
 </div>
 
+
 <div class="card">
 
 <div class="cover">
@@ -171,7 +171,9 @@ Select Song
 Artist
 </div>
 
+
 <input type="range" id="progress">
+
 
 <div class="controls">
 
@@ -187,6 +189,7 @@ Artist
 
 </div>
 
+
 <div class="list">
 
 <h2>Songs</h2>
@@ -195,7 +198,10 @@ Artist
 
 </div>
 
+
 </div>
+
+
 <div class="nav">
 <div>🏠<br>Home</div>
 <div>🎵<br>Music</div>
@@ -203,179 +209,5 @@ Artist
 <div>📂<br>Library</div>
 </div>
 
+
 <audio id="audio"></audio>
-
-
-<script>
-
-const songs=[
-{
-title:"Online Music 1",
-artist:"Soma FM",
-url:"https://ice5.somafm.com/live-128-mp3"
-},
-{
-title:"Online Music 2",
-artist:"Groove Salad",
-url:"https://ice1.somafm.com/groovesalad-128-mp3"
-},
-{
-title:"Online Music 3",
-artist:"Drone Zone",
-url:"https://ice2.somafm.com/dronezone-128-mp3"
-}
-];
-
-
-let current=0;
-let playing=false;
-
-
-const audio=document.getElementById("audio");
-const title=document.getElementById("title");
-const artist=document.getElementById("artist");
-const play=document.getElementById("play");
-const progress=document.getElementById("progress");
-const songBox=document.getElementById("songs");
-
-
-function loadSong(index){
-
-current=index;
-
-audio.src=songs[index].url;
-
-title.innerHTML=songs[index].title;
-
-artist.innerHTML=songs[index].artist;
-
-}
-
-
-function playPause(){
-
-if(!audio.src){
-loadSong(current);
-}
-
-
-if(playing){
-
-audio.pause();
-
-play.innerHTML="▶";
-
-playing=false;
-
-
-}else{
-
-audio.play();
-
-play.innerHTML="⏸";
-
-playing=true;
-
-}
-
-}
-
-
-
-function next(){
-
-current++;
-
-if(current>=songs.length){
-
-current=0;
-
-}
-
-loadSong(current);
-
-audio.play();
-
-playing=true;
-
-play.innerHTML="⏸";
-
-}
-
-
-
-function previous(){
-
-current--;
-
-if(current<0){
-
-current=songs.length-1;
-
-}
-
-loadSong(current);
-
-audio.play();
-
-playing=true;
-
-play.innerHTML="⏸";
-
-}
-
-
-
-songs.forEach((song,index)=>{
-
-songBox.innerHTML += `
-
-<div class="song" onclick="loadSong(${index})">
-
-<div class="pic">🎵</div>
-
-<div class="info">
-
-<h3>${song.title}</h3>
-
-<p>${song.artist}</p>
-
-</div>
-
-<div class="like">▶</div>
-
-</div>
-
-`;
-
-});
-
-
-
-audio.addEventListener("timeupdate",()=>{
-
-if(audio.duration){
-
-progress.value=(audio.currentTime/audio.duration)*100;
-
-}
-
-});
-
-
-progress.addEventListener("input",()=>{
-
-if(audio.duration){
-
-audio.currentTime=(progress.value/100)*audio.duration;
-
-}
-
-});
-
-
-</script>
-
-
-</body>
-</html>
