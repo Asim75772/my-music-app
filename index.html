@@ -352,10 +352,13 @@ margin-top:7px;
 font-size:14px;
 }
 
+/* ================= FAVORITE BUTTON ================= */
+
 .station-actions{
 display:flex;
 align-items:center;
-gap:10px;
+gap:8px;
+flex-shrink:0;
 }
 
 .favorite{
@@ -363,10 +366,29 @@ width:45px;
 height:45px;
 border-radius:50%;
 
-background:transparent;
+background:#171520;
 color:#ff009d;
 
 font-size:28px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:1px solid #302b3b;
+
+transition:.2s;
+}
+
+.favorite:active{
+transform:scale(.88);
+}
+
+.favorite.is-favorite{
+color:#ff009d;
+background:rgba(255,0,157,.12);
+border-color:#ff009d;
+box-shadow:0 0 15px rgba(255,0,157,.25);
 }
 
 .play{
@@ -381,6 +403,8 @@ background:linear-gradient(145deg,#ff009d,#ff0080);
 font-size:22px;
 
 box-shadow:0 0 20px rgba(255,0,157,.25);
+
+flex-shrink:0;
 }
 
 .play.playing{
@@ -736,7 +760,7 @@ font-size:36px;
 
 .station{
 padding:12px;
-gap:11px;
+gap:8px;
 }
 
 .station-logo{
@@ -753,10 +777,15 @@ font-size:16px;
 font-size:12px;
 }
 
+.station-actions{
+gap:5px;
+}
+
 .favorite{
-display:block;
-width:35px;
-font-size:24px;
+display:flex;
+width:40px;
+height:40px;
+font-size:25px;
 }
 
 .play{
@@ -784,27 +813,82 @@ gap:4px;
 
 }
 
+/* ================= SMALL PHONE ================= */
+
 @media(max-width:420px){
 
-.favorite{
-display:none;
-}
-
 .station{
-gap:8px;
+gap:6px;
+padding:10px;
 }
 
 .station-logo{
-width:54px;
-height:54px;
+width:52px;
+height:52px;
+}
+
+.station-info{
+min-width:0;
+}
+
+.station-name{
+font-size:14px;
+}
+
+.station-meta{
+font-size:11px;
+}
+
+.station-actions{
+gap:4px;
+}
+
+.favorite{
+display:flex;
+width:36px;
+height:36px;
+font-size:24px;
 }
 
 .play{
-width:50px;
-height:50px;
+width:48px;
+height:48px;
+font-size:19px;
 }
 
 }
+
+/* ================= VERY SMALL PHONE ================= */
+
+@media(max-width:360px){
+
+.station-logo{
+width:48px;
+height:48px;
+}
+
+.station-name{
+font-size:13px;
+}
+
+.station-meta{
+font-size:10px;
+}
+
+.favorite{
+width:34px;
+height:34px;
+font-size:22px;
+}
+
+.play{
+width:45px;
+height:45px;
+}
+
+}
+
+/* ================= DESKTOP ================= */
 
 @media(min-width:900px){
 
@@ -1392,28 +1476,13 @@ String(station.country || "")
 ).toLowerCase();
 
 
-/*
-   ONLY INDIA
-*/
-
 if(country && country !== "IN"){
 return false;
 }
 
-
-/*
-   If country is missing,
-   reject it for category safety.
-*/
-
 if(!country){
 return false;
 }
-
-
-/*
-   Block unwanted stations
-*/
 
 for(const word of BLOCKED_WORDS){
 
@@ -1927,8 +1996,6 @@ type="all",
 button=null
 ){
 
-/* category active */
-
 document
 .querySelectorAll(".category")
 .forEach(x=>{
@@ -1945,8 +2012,6 @@ button.classList.add("active");
 
 }
 
-
-/* bottom nav */
 
 document
 .querySelectorAll(".nav-item")
@@ -1978,12 +2043,6 @@ config.title;
 let result = [];
 
 
-/*
-   Try several searches.
-   This fixes the problem where
-   one exact tag gives zero results.
-*/
-
 for(
 const query of config.queries
 ){
@@ -2000,10 +2059,6 @@ mergeStations(result,data);
 }
 
 
-/*
-   Enough stations found
-*/
-
 if(result.length >= 20){
 
 break;
@@ -2013,13 +2068,9 @@ break;
 }
 
 
-/* limit */
-
 stations =
 result.slice(0,40);
 
-
-/* render */
 
 renderStations(stations);
 
@@ -2180,7 +2231,8 @@ escapeHtml(station.state)
 <div class="station-actions">
 
 <button
-class="favorite"
+class="favorite ${fav ? "is-favorite" : ""}"
+aria-label="Favorite"
 onclick="toggleFavorite(event,${index})">
 
 ${fav ? "♥" : "♡"}
@@ -2237,10 +2289,6 @@ audio.src =
 station.url_resolved;
 
 
-/*
-   Count station click
-*/
-
 try{
 
 fetch(
@@ -2250,10 +2298,6 @@ station.stationuuid
 
 }catch(e){}
 
-
-/*
-   play
-*/
 
 audio.play()
 
@@ -2452,9 +2496,7 @@ favorites.push(station);
 }
 
 
-/*
-   Save
-*/
+/* Save permanently */
 
 localStorage.setItem(
 "madhuFavorites",
@@ -2462,9 +2504,7 @@ JSON.stringify(favorites)
 );
 
 
-/*
-   Re-render
-*/
+/* Re-render current list */
 
 renderStations(stations);
 
