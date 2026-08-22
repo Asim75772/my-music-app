@@ -1,61 +1,1043 @@
-<meta name="theme-color" content="#08070d">
+<!DOCTYPE html>
+<html lang="bn">
+<head>
 
-<meta name="description"
-content="Madhu Music World – বাংলা গান, হিন্দি গান, পুরোনো বাংলা গান, Kishore Kumar, Mohammed Rafi, Lata Mangeshkar, Asha Bhosle, ভজন এবং Indian Live Radio শুনুন।">
+    <meta charset="UTF-8">
 
-<meta name="keywords"
-content="Madhu Music World, Bengali Music, বাংলা গান, পুরোনো বাংলা গান, Hindi Oldies, Kishore Kumar, Mohammed Rafi, Lata Mangeshkar, Asha Bhosle, Bengali Bhajan, Hindi Bhajan, Indian Radio, Live Radio">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="author"
-content="Madhu Music World">
+    <meta name="theme-color" content="#08070d">
 
-<meta name="robots"
-content="index, follow">
+    <meta name="description"
+    content="Madhu Music World – বাংলা গান, হিন্দি গান, পুরোনো বাংলা গান, Kishore Kumar, Mohammed Rafi, Lata Mangeshkar, Asha Bhosle, ভজন এবং Indian Live Radio শুনুন।">
 
-<link rel="canonical"
-href="https://asim75772.github.io/my-music-app/">
+    <meta name="keywords"
+    content="Madhu Music World, Bengali Music, বাংলা গান, পুরোনো বাংলা গান, Hindi Oldies, Kishore Kumar, Mohammed Rafi, Lata Mangeshkar, Asha Bhosle, Bengali Bhajan, Hindi Bhajan, Indian Radio, Live Radio">
 
-<!-- Open Graph / Facebook / WhatsApp -->
+    <meta name="author"
+    content="Madhu Music World">
 
-<meta property="og:type"
-content="website">
+    <meta name="robots"
+    content="index, follow">
 
-<meta property="og:title"
-content="Madhu Music World – Bengali, Hindi & Retro Music">
+    <link rel="canonical"
+    href="https://asim75772.github.io/my-music-app/">
 
-<meta property="og:description"
-content="বাংলা, হিন্দি, পুরোনো গান, ভজন এবং Indian Live Radio শুনুন Madhu Music World-এ।">
+    <!-- Open Graph -->
 
-<meta property="og:url"
-content="https://asim75772.github.io/my-music-app/">
+    <meta property="og:type"
+          content="website">
 
-<meta property="og:site_name"
-content="Madhu Music World">
+    <meta property="og:title"
+          content="Madhu Music World – Bengali, Hindi & Retro Music">
 
-<!-- Twitter / Social Sharing -->
+    <meta property="og:description"
+          content="বাংলা, হিন্দি, পুরোনো গান, ভজন এবং Indian Live Radio শুনুন Madhu Music World-এ।">
 
-<meta name="twitter:card"
-content="summary">
+    <meta property="og:url"
+          content="https://asim75772.github.io/my-music-app/">
 
-<meta name="twitter:title"
-content="Madhu Music World">
+    <meta property="og:site_name"
+          content="Madhu Music World">
 
-<meta name="twitter:description"
-content="বাংলা, হিন্দি, পুরোনো গান, ভজন এবং Indian Live Radio">
+    <!-- Twitter -->
 
-<title>
-Madhu Music World – Bengali Hindi Retro Music & Live Radio
-</title>
+    <meta name="twitter:card"
+          content="summary">
 
-<!-- Google Structured Data -->
+    <meta name="twitter:title"
+          content="Madhu Music World">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Madhu Music World",
-  "url": "https://asim75772.github.io/my-music-app/",
-  "description": "Bengali, Hindi, Retro, Bhajan and Indian Live Radio",
-  "inLanguage": ["bn", "hi", "en"]
-}
-</script>
+    <meta name="twitter:description"
+          content="বাংলা, হিন্দি, পুরোনো গান, ভজন এবং Indian Live Radio">
+
+    <title>
+        Madhu Music World – Bengali Hindi Retro Music & Live Radio
+    </title>
+
+    <!-- Google Structured Data -->
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Madhu Music World",
+      "url": "https://asim75772.github.io/my-music-app/",
+      "description": "Bengali, Hindi, Retro, Bhajan and Indian Live Radio",
+      "inLanguage": ["bn", "hi", "en"]
+    }
+    </script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                "Noto Sans Bengali",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #252035 0%,
+                    #100e18 40%,
+                    #08070d 100%
+                );
+
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 28px 18px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171322,
+                    #09080e
+                );
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #d6b7ff
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            margin-top: 7px;
+            color: #aaa5b5;
+            font-size: 14px;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        nav a {
+            color: #ddd8e5;
+            text-decoration: none;
+
+            padding: 8px 14px;
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.06);
+
+            font-size: 14px;
+
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.14);
+            color: #ffffff;
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px 20px 35px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 7vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #c7a8ff,
+                    #ffffff
+                );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+
+            color: #b9b4c2;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            max-width: 650px;
+            margin: 30px auto 10px;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            padding: 15px 20px;
+
+            border: 1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        .search-box input::placeholder {
+            color: #898493;
+        }
+
+        /* MAIN */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin: 35px 0 18px;
+        }
+
+        .section-title span {
+            color: #bda2ff;
+        }
+
+        /* MUSIC GRID */
+
+        .music-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(260px, 1fr));
+
+            gap: 18px;
+        }
+
+        .music-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.035)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.09);
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            transition:
+                transform 0.25s,
+                background 0.25s;
+
+            overflow: hidden;
+        }
+
+        .music-card:hover {
+            transform: translateY(-4px);
+
+            background:
+                rgba(255,255,255,0.11);
+        }
+
+        .music-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(255,255,255,0.09);
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .music-card h3 {
+            font-size: 19px;
+            margin-bottom: 7px;
+        }
+
+        .music-card p {
+            color: #aaa5b3;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        audio {
+            width: 100%;
+            height: 38px;
+        }
+
+        /* RADIO */
+
+        .radio-card {
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #171323,
+                    #0d0b13
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.09);
+
+            text-align: center;
+        }
+
+        .radio-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .radio-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .radio-card p {
+            color: #aaa5b3;
+            margin-bottom: 18px;
+        }
+
+        .radio-button {
+            display: inline-block;
+
+            padding: 12px 24px;
+
+            border-radius: 25px;
+
+            color: white;
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #60439a,
+                    #936bcf
+                );
+
+            font-weight: 700;
+        }
+
+        /* ABOUT */
+
+        .about {
+            margin-top: 25px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            line-height: 1.9;
+
+            color: #c0bbc8;
+        }
+
+        .about strong {
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 60px;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            color: #777280;
+
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 20px 12px;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                font-size: 13px;
+                padding: 7px 11px;
+            }
+
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            🎵 Madhu Music World
+        </div>
+
+        <div class="tagline">
+            Bengali • Hindi • Retro • Bhajan • Live Radio
+        </div>
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#music">
+                Music
+            </a>
+
+            <a href="#radio">
+                Live Radio
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section
+        class="hero"
+        id="home">
+
+        <h1>
+            Welcome to
+            <span>Madhu Music World</span>
+        </h1>
+
+        <p>
+            বাংলা গান, হিন্দি গান, পুরোনো দিনের
+            গান, ভজন এবং Indian Live Radio—
+            সবকিছু এক জায়গায়।
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="🔎 গান বা শিল্পীর নাম লিখুন...">
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <!-- MUSIC -->
+
+        <section id="music">
+
+            <h2 class="section-title">
+                🎧 <span>Music Collection</span>
+            </h2>
+
+            <div
+                class="music-grid"
+                id="musicGrid">
+
+
+                <!-- SONG 1 -->
+
+                <div
+                    class="music-card"
+                    data-search="বাংলা গান bengali music">
+
+                    <div class="music-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        বাংলা গান
+                    </h3>
+
+                    <p>
+                        Bengali Music Collection
+                    </p>
+
+                    <!-- নিজের MP3 file এখানে দিন -->
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/bengali.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 2 -->
+
+                <div
+                    class="music-card"
+                    data-search="হিন্দি গান hindi music">
+
+                    <div class="music-icon">
+                        🎶
+                    </div>
+
+                    <h3>
+                        হিন্দি গান
+                    </h3>
+
+                    <p>
+                        Hindi Music Collection
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/hindi.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 3 -->
+
+                <div
+                    class="music-card"
+                    data-search="kishore kumar old songs">
+
+                    <div class="music-icon">
+                        🎤
+                    </div>
+
+                    <h3>
+                        Kishore Kumar
+                    </h3>
+
+                    <p>
+                        Retro Hindi Collection
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/kishore.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 4 -->
+
+                <div
+                    class="music-card"
+                    data-search="mohammed rafi old songs">
+
+                    <div class="music-icon">
+                        🎙️
+                    </div>
+
+                    <h3>
+                        Mohammed Rafi
+                    </h3>
+
+                    <p>
+                        Golden Era Collection
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/rafi.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 5 -->
+
+                <div
+                    class="music-card"
+                    data-search="lata mangeshkar old songs">
+
+                    <div class="music-icon">
+                        🎼
+                    </div>
+
+                    <h3>
+                        Lata Mangeshkar
+                    </h3>
+
+                    <p>
+                        Evergreen Collection
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/lata.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 6 -->
+
+                <div
+                    class="music-card"
+                    data-search="asha bhosle old songs">
+
+                    <div class="music-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        Asha Bhosle
+                    </h3>
+
+                    <p>
+                        Evergreen Hindi Collection
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/asha.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 7 -->
+
+                <div
+                    class="music-card"
+                    data-search="bengali bhajan">
+
+                    <div class="music-icon">
+                        🕉️
+                    </div>
+
+                    <h3>
+                        Bengali Bhajan
+                    </h3>
+
+                    <p>
+                        Devotional Bengali Music
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/bengali-bhajan.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+
+                <!-- SONG 8 -->
+
+                <div
+                    class="music-card"
+                    data-search="hindi bhajan">
+
+                    <div class="music-icon">
+                        🪔
+                    </div>
+
+                    <h3>
+                        Hindi Bhajan
+                    </h3>
+
+                    <p>
+                        Devotional Hindi Music
+                    </p>
+
+                    <audio
+                        controls
+                        preload="none">
+
+                        <source
+                            src="songs/hindi-bhajan.mp3"
+                            type="audio/mpeg">
+
+                        Your browser does not support
+                        the audio element.
+
+                    </audio>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RADIO -->
+
+        <section id="radio">
+
+            <h2 class="section-title">
+                📻 <span>Indian Live Radio</span>
+            </h2>
+
+            <div class="radio-card">
+
+                <div class="radio-icon">
+                    📻
+                </div>
+
+                <h3>
+                    Indian Live Radio
+                </h3>
+
+                <p>
+                    Listen to Indian radio stations
+                    from Madhu Music World.
+                </p>
+
+                <!-- আপনার radio stream URL এখানে দিন -->
+
+                <a
+                    href="#"
+                    class="radio-button"
+                    onclick="startRadio(event)">
+
+                    ▶ Start Live Radio
+
+                </a>
+
+                <div
+                    id="radioMessage"
+                    style="margin-top:15px;color:#aaa;">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about">
+
+            <h2 class="section-title">
+                ℹ️ <span>About Madhu Music World</span>
+            </h2>
+
+            <div class="about">
+
+                <p>
+
+                    <strong>Madhu Music World</strong>
+                    is a music platform for Bengali,
+                    Hindi, retro and devotional music.
+
+                    এখানে বাংলা গান, পুরোনো দিনের গান,
+                    Hindi oldies, Bhajan এবং Indian
+                    Live Radio-এর collection পাওয়া যাবে।
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    আমাদের লক্ষ্য হল পুরোনো ও
+                    evergreen music-কে সহজে
+                    music lovers-এর কাছে পৌঁছে দেওয়া।
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © <span id="year"></span>
+        Madhu Music World
+
+        <br><br>
+
+        Bengali • Hindi • Retro • Bhajan • Radio
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* CURRENT YEAR */
+
+        document.getElementById("year")
+            .textContent =
+            new Date().getFullYear();
+
+
+        /* SEARCH */
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const cards =
+            document.querySelectorAll(".music-card");
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const query =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                cards.forEach(
+                    function(card) {
+
+                        const text =
+                            card.dataset.search
+                                .toLowerCase();
+
+
+                        if (
+                            query === "" ||
+                            text.includes(query)
+                        ) {
+
+                            card.classList.remove(
+                                "hidden"
+                            );
+
+                        } else {
+
+                            card.classList.add(
+                                "hidden"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* PREVENT MULTIPLE SONGS PLAYING */
+
+        const players =
+            document.querySelectorAll("audio");
+
+
+        players.forEach(
+            function(player) {
+
+                player.addEventListener(
+                    "play",
+                    function() {
+
+                        players.forEach(
+                            function(other) {
+
+                                if (
+                                    other !== player
+                                ) {
+
+                                    other.pause();
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* RADIO */
+
+        function startRadio(event) {
+
+            event.preventDefault();
+
+            document.getElementById(
+                "radioMessage"
+            ).textContent =
+                "Live Radio stream URL এখনও যোগ করা হয়নি।";
+
+        }
+
+    </script>
+
+</body>
+</html>
